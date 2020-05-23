@@ -14,9 +14,10 @@
 
     <title>@yield('title-block')</title>
 </head>
-<body class="bg-gray">
-    <div class="">
+<body class="bg-light">
+    <div>
         @include('include/header')
+        @include('include/navbar')
     </div>
     @include('include/toolbar')
     <div class="container mt-5">

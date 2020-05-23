@@ -2,25 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', 'MainController@index')->name('home');
 
-Route::get('/contacts', function () {
-    return view('contacts');
-})->name('contacts');
+Route::get('/contacts', 'MainController@contacts')->name('contacts');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+Route::get('/about', 'MainController@about')->name('about');
+
+Route::get('/categories', 'MainController@categories')->name('categories');
+
+Route::get('/{category}', 'MainController@category')->name('category');
+
+Route::get('/category/{product?}','MainController@product')->name('product');
+// знак ? после имени продлукта указывает на то что это параметр не обязательный
+
+Route::get('/car_sale', 'MainController@car_sale')->name('car_sale');
+
+
