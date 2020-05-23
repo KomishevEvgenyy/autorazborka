@@ -30,7 +30,7 @@ class MainController extends Controller
         return view('categories', compact('categories'));
     }
 
-    public function category($code){
+    public function category($code = null){
         // Возвращает страницу с товарами выбраной категории
         $category = Category::where('code', $code)->first();
         // Через модель Category методом where первым параментром указываем по какому полю проводим поиск,
@@ -45,12 +45,24 @@ class MainController extends Controller
         // приходит с url после имени категории "/vaz/engine".
 
         return view('product', ['product' => $product]);
-        // возвращает шаблон product.blade.php, а так же переаедт массив с БД
+        // возвращает шаблон product.blade.php, а так же передает массив с БД
     }
 
     public function car_sale(){
         // метод который выводит страницу с Б/у автомобилями
-        return view('car_sale');
+        $car_sale = "Страница для продажи Б/у автомобилей";
+        return view('car_sale', compact('car_sale'));
     }
 
+    public function basket(){
+        // Методк который будет заполнять корзину с товарами
+        $basket = "Страница для корзины с товарами";
+        return view('basket', compact('basket'));
+    }
+
+    public function basketPlace(){
+        //  метод который позволяет оформить заказ товаров которые находятся в корзине
+        $basketPlace = "Страница с формой для отправки заказов";
+        return view('order', compact('basketPlace'));
+    }
 }

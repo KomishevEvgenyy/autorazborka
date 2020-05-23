@@ -12,7 +12,7 @@
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
 
-    <title>@yield('title-block')</title>
+    <title> Авторазборка Запорожье - @yield('title-block')</title>
 </head>
 <body class="bg-light">
     <div>

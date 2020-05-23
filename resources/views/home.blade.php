@@ -1,5 +1,5 @@
 @extends('layouts/main')
-@section('title-block') Авторазборка Запорожье - Главная @endsection
+@section('title-block', 'Главная')
 
 @section('content')
     <h1>

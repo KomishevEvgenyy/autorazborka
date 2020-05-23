@@ -1,12 +1,12 @@
 @extends('layouts/main')
 
-@section('title-block') Авторазборка Запорожье - {{ $category->brand }} @endsection
+@section('title-block', $category->brand)
 
 @section('content')
     <h1>
-        Страницы с категорией
+        Страницы определенной категории
     </h1>
-    <p>
-        {{ $category->brand }}
-    </p>
+
+    <p> {{ $category->brand }} </p>
+
 @endsection

@@ -1,6 +1,6 @@
 @extends('layouts/main')
 
-@section('title-block') Авторазборка Запорожье - О нас @endsection
+@section('title-block', 'О нас')
 
 @section('content')
     <h1 class="text-justify font-weight-bold text-size-h-about">О Нас</h1>

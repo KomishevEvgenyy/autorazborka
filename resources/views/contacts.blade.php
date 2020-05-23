@@ -1,6 +1,6 @@
 @extends('layouts/main')
 
-@section('title-block') Авторазборка Запорожье - Контакты @endsection
+@section('title-block', 'Контакты')
 
 @section('content')
     <div class="pl-4">

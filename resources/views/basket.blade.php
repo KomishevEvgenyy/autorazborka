@@ -1,9 +1,10 @@
 @extends('layouts/main')
 
-@section('title-block', 'Б/у автомобили')
+@section('title-block', 'Корзина')
 
 @section('content')
     <h1>
-        {{ $car_sale }}
+        {{ $basket }}
     </h1>
+
 @endsection
