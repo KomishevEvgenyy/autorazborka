@@ -9,4 +9,11 @@
 
     <p> {{ $category->brand }} </p>
 
+    <div class="row">
+        @foreach($category->products as $product)
+            @include('card', compact('product'))
+        @endforeach
+    </div>
+
+
 @endsection

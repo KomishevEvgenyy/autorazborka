@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     public function index(){
+        $products = Product::get();
         // метод который выводит главную страницу
-        return view('home');
+        return view('home', compact('products'));
     }
 
     public function contacts(){
@@ -30,7 +31,7 @@ class MainController extends Controller
         return view('categories', compact('categories'));
     }
 
-    public function category($code = null){
+    public function category($code){
         // Возвращает страницу с товарами выбраной категории
         $category = Category::where('code', $code)->first();
         // Через модель Category методом where первым параментром указываем по какому полю проводим поиск,
@@ -40,7 +41,7 @@ class MainController extends Controller
 
     }
 
-    public function product($product = null){
+    public function product($category, $product = null){
         // метод который будет динамически формировать страницы с товарами. Метод принимает один параметр который
         // приходит с url после имени категории "/vaz/engine".
 

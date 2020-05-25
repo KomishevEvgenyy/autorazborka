@@ -8,7 +8,7 @@
     </h1>
         <ul class="">
             @foreach($categories as $category)
-                <li> <a href="/{{$category->code}}">{{ $category->brand }}</a></li>
+                <li> <a href="{{ route('category', $category->code) }}">{{ $category->brand }}</a></li>
             @endforeach
         </ul>
 
