@@ -7,5 +7,8 @@
     <p>
         {{ $product }}
     </p>
+        <div class="row">
+            @include('card')
+        </div>
 
 @endsection
