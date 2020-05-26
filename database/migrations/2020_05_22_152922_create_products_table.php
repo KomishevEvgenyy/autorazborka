@@ -15,13 +15,12 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('category_id'); // Марка автомобиля
-            $table->string('model'); // модель автомобиля
-            $table->string('part_name');  // название детали
-            $table->text('description')->nullable();  // описание детали. Поле моет быть пустым
-            $table->double('price')->default(0);  // цена детали. Значение по default равно 0
-            $table->string('vendor_code');  // артикл детали
-            $table->string('images')->nullable();  // фотография детали
+            $table->integer('category_id');
+            $table->string('name');  // имя товара
+            $table->string('code');  // код товара
+            $table->text('description')->nullable(); // описания товара
+            $table->text('image')->nullable();  // фото товара
+            $table->double('price')->default(0); // цена товара
             $table->timestamps();
         });
     }

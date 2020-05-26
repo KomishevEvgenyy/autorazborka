@@ -41,12 +41,12 @@ class MainController extends Controller
 
     }
 
-    public function product($category, $product = null){
-        // метод который будет динамически формировать страницы с товарами. Метод принимает один параметр который
-        // приходит с url после имени категории "/vaz/engine".
-
-        return view('product', ['product' => $product]);
-        // возвращает шаблон product.blade.php, а так же передает массив с БД
+    public function product($category_code, $product_code = null){
+        // метод который будет динамически формировать страницы с товарами. Метод принимает первым параметром поле code
+        // категории, а вторым параметром принимает поле code товара
+        $product = Product::where('code', $product_code)->first();
+        return view('product', compact('product'));
+        // возвращает шаблон product.blade.php, а так же передает массив товаров с БД
     }
 
     public function car_sale(){
@@ -55,15 +55,4 @@ class MainController extends Controller
         return view('car_sale', compact('car_sale'));
     }
 
-    public function basket(){
-        // Методк который будет заполнять корзину с товарами
-        $basket = "Страница для корзины с товарами";
-        return view('basket', compact('basket'));
-    }
-
-    public function basketPlace(){
-        //  метод который позволяет оформить заказ товаров которые находятся в корзине
-        $basketPlace = "Страница с формой для отправки заказов";
-        return view('order', compact('basketPlace'));
-    }
 }

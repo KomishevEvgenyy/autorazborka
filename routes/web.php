@@ -9,13 +9,16 @@ Route::get('/contacts', 'MainController@contacts')->name('contacts');
 
 Route::get('/about', 'MainController@about')->name('about');
 
-Route::get('/categories', 'MainController@categories')->name('categories');
-
 Route::get('/car_sale', 'MainController@car_sale')->name('car_sale');
 
-Route::get('/basket', 'MainController@basket')->name('basket');
+Route::get('/basket', 'BasketController@basket')->name('basket');
 
-Route::get('/basket/place', 'MainController@basketPlace')->name('basket-place');
+Route::get('/basket/place', 'BasketController@basketPlace')->name('basket-place');
+
+Route::post('/basket/add/{id}', 'BasketController@basketAdd')->name('basket-add');
+// маршрут который будет добавлять товары в корзину
+
+Route::get('/categories', 'MainController@categories')->name('categories');
 
 Route::get('/{category}', 'MainController@category')->name('category');
 

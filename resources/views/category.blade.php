@@ -4,16 +4,12 @@
 
 @section('content')
     <h1>
-        Страницы определенной категории
+        Запчасти для автомобля {{ $category->name }}
     </h1>
-
-    <p> {{ $category->brand }} </p>
 
     <div class="row">
         @foreach($category->products as $product)
             @include('card', compact('product'))
         @endforeach
     </div>
-
-
 @endsection

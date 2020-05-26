@@ -15,9 +15,10 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('brand');  // Марка автомобиля
-            $table->string('code'); //
-            $table->string('images')->nullable();  // фотография детали
+            $table->string('name');  // категория
+            $table->string('code');  // код категории
+            $table->text('description')->nullable();  // описание категории
+            $table->text('image')->nullable();  // картинка товара
             $table->timestamps();
         });
     }

@@ -1,14 +1,22 @@
 @extends('layouts/main')
 
-@section('title-block', $product)
+@section('title-block', 'Товар')
 
 @section('content')
-        <h1>Страница для отображения определенного товара</h1><br>
-    <p>
-        {{ $product }}
-    </p>
-        <div class="row">
-            @include('card')
-        </div>
+    <div class="container">
+        <div class="starter-template">
+            <h1>{{ $product->name }}</h1>
+            <h2>{{ $product->category->name }}</h2>
+            <p>Цена: <b>{{ $product->price }} грн.</b></p>
+            <img src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
+            <p>{{ $product->description }}</p>
 
+            <form action="{{ route('basket-add', $product) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-success" role="button">Добавить в корзину</button>
+
+                <input type="hidden" name="_token" value="nboNrCcGlhX72imNVVIHfGC97xVAWFPx0KtdWuAo">
+            </form>
+        </div>
+    </div>
 @endsection
