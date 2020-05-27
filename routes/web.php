@@ -18,6 +18,9 @@ Route::get('/basket/place', 'BasketController@basketPlace')->name('basket-place'
 Route::post('/basket/add/{id}', 'BasketController@basketAdd')->name('basket-add');
 // маршрут который будет добавлять товары в корзину
 
+Route::post('/basket/remove/{id}', 'BasketController@basketRemove')->name('basket-remove');
+// маршрут для удаления товара из корзины
+
 Route::get('/categories', 'MainController@categories')->name('categories');
 
 Route::get('/{category}', 'MainController@category')->name('category');

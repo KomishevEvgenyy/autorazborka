@@ -12,4 +12,14 @@ class Product extends Model
         // возвращает одну категорию
         return $this->belongsTo(Category::class);
     }
+
+    public function getPriceForCount(){
+        // метод которий подсчитывает общую суму для определенного товара
+        if (!is_null($this->pivot)){
+            // Если значение не null то колчество товара умножаем на его цену
+            return $this->pivot->count * $this->price;
+        }
+        return $this->price;
+        // если де значение null то выводим его цену за единицу товара
+    }
 }

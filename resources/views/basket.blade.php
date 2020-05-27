@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="starter-template">
-        <p class="alert alert-success">Добавлен товар iPhone X 256GB</p>
+        <p class="alert alert-success">Добавлен товар </p>
         <h1>Корзина</h1>
         <p>Оформление заказа</p>
         <div class="panel">
@@ -15,41 +15,43 @@
                     <th>Название</th>
                     <th>Удалить</th>
                     <th>Цена</th>
-
+                    <th>Общая сума</th>
                 </tr>
                 </thead>
                 <tbody>
+
                 @foreach($order->products as $product)
-                <tr>
-                    <td>
-                        <a href=" {{ route('product,', $product->category->code, $product->code) }} ">
-                            <img height="56px" src="http://internet-shop.tmweb.ru/storage/products/iphone_x_silver.jpg">
-                            {{ $product->description }}
-                        </a>
-                    </td>
-                    <td>
-                        <div class="btn-group form-inline text-center">
-                            <form action="http://internet-shop.tmweb.ru/basket/remove/2" method="POST">
-                                <button type="submit" class="btn btn-danger" href=""><span class="glyphicon glyphicon-minus" aria-hidden="true">x</span></button>
-                                <input type="hidden" name="_token" value="nboNrCcGlhX72imNVVIHfGC97xVAWFPx0KtdWuAo">
-                            </form>
+                    <tr>
+                        <td>
+                            <a href=" {{ route('product', [$product->category->code, $product->code]) }} ">
+                                <img height="56px" src="{{ URL::asset('/storage/engine.jpg') }}">
+                                {{ $product->description }}
+                            </a>
+                        </td>
+                        <td><span class="badge">{{ $product->pivot->count }}</span>
+                            <div class="btn-group form-inline text-center">
+                                <form action="{{ route('basket-remove', $product) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger" href=""><span aria-hidden="true">x</span>
+                                    </button>
+                                </form>
 
-                        </div>
-                    </td>
-                    <td>{{ $product->price }} грн.</td>
-
-                </tr>
+                            </div>
+                        </td>
+                        <td>{{ $product->price }} грн.</td>
+                        <td>{{ $product->getPriceForCount() }} грн.</td>
+                    </tr>
                 @endforeach
                 <tr>
-                    <td colspan="2">Общая стоимость:</td>
-                    <td>89990 ₽</td>
+                    <td colspan="3">Общая стоимость:</td>
+                    <td>{{ $order->getFullPrice() }} грн.</td>
                 </tr>
                 </tbody>
             </table>
             <br>
-            <div class="btn-group pull-right" role="group">
-                <a type="button" class="btn btn-success" href="http://internet-shop.tmweb.ru/basket/place">Оформить заказ</a>
-            </div>
+            <form method="POST" action="#">
+                <button type="submit" class="btn btn-success">Оформить заказ</button>
+            </form>
         </div>
     </div>
 
