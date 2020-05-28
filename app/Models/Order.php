@@ -18,10 +18,31 @@ class Order extends Model
     }
 
     public function getFullPrice(){
+        // метод который считает общую суму товара
         $sum = 0;
         foreach($this->products as $product){
             $sum += $product->getPriceForCount();
         }
         return $sum;
+    }
+
+    public function saveOrder($name, $phone){
+
+        if ($this->status == 0){
+            $this->name = $name;
+            // записываем в поле name таблицы orders значение которое пришло по request->name
+            $this->phone = $phone;
+            // записываем в поле phone таблицы orders значение которое пришло по request->phone
+            $this->status = 1;
+            // меняем значение статус в поле status таболицы order на 1
+            $this->save();
+            // сохранение изменений в таблице
+
+            session()->forget('orderId');
+            // удаление заказа из сессии
+            return true;
+        }
+        return false;
+
     }
 }

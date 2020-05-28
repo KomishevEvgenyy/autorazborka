@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
@@ -15,13 +16,47 @@ class BasketController extends Controller
             // находим заказ и записываем его в переменную $order
             $order = Order::findOrFail($orderId);
         }
+
         return view('basket', compact('order'));
     }
 
     public function basketPlace(){
         //  метод который позволяет оформить заказ товаров которые находятся в корзине
-        $basketPlace = "Страница с формой для отправки заказов";
-        return view('order', compact('basketPlace'));
+        $orderId = session('orderId');
+        // С помощью сессии будут добавляться товара. И чтобы достать данные из сессии нужно использовать аргументом ключ
+        if (is_null($orderId)) {
+            //  Е[сли заказ пустой то выполняется redirect на главную страницу
+            return redirect()->route('home');
+        }
+        $order = Order::find($orderId);
+        // находим заказ и записываем его в переменную order
+        return view('order', compact('order'));
+    }
+
+    public function basketConfirm(Request $request){
+        // метод который подтверждает заказ
+        $orderId = session('orderId');
+        // С помощью сессии будут добавляться товара. И чтобы достать данные из сессии нужно использовать аргументом ключ
+        if (is_null($orderId)) {
+            //  Е[сли заказ пустой то выполняется redirect на главную страницу
+            return redirect()->route('home');
+        }
+        $order = Order::find($orderId);
+        // находим заказ и щаписываем его в переменную order
+        $success = $order->saveOrder($request->name, $request->phone);
+        // в метод saveOrder, модели Order передаем первым параметром поля имя, а вторым параметром поле телефон
+        // с помощью метода request для созранения заказа с данными заказчика
+
+        if ($success){
+            // Если переменная success вернула true(заказ принят в обработку) то в основном шаблоне выводим сообшщение с помощью флеш сессии
+            // через метод get*(
+            session()->flash('success','Товар отправлен в обработку');
+        }else{
+            // Если переменная success вернула false(случилась ошибка а ходе передачи заказа) то в основном шаблоне выводим сообшщение с помощью флеш сессии
+            // через метод get*(
+            session()->flash('error','Ошибка');
+        }
+        return redirect()->route('home');
     }
 
     public function basketAdd($productId){
@@ -55,6 +90,11 @@ class BasketController extends Controller
             // добавление товара в заказ с мопощью связи где методом attach() передаем id товара
         }
 
+        $product = Product::find($productId);
+        // находим товар который был положен в корзину и записываем его в переменную product
+        session()->flash('success', 'Добавлен товар '.$product->name);
+        // методом flash через сессиию выводим сообщение о добавлнении товара в корзину в шаблоне main
+
        // $order->products()->attach($productId);
         // добавление товара в заказ с мопощью связи где методом attach() передаем id товара
 
@@ -86,6 +126,12 @@ class BasketController extends Controller
                 $pivotRow->update();
             }
         }
+
+        $product = Product::find($productId);
+        // находим товар который был положен в корзину и записываем его в переменную product
+        session()->flash('error', 'Удален товар '.$product->name);
+        // методом flash через сессиию выводим сообщение о удалении товара из корзину в шаблоне main
+
         return redirect()->route('basket');
     }
 }

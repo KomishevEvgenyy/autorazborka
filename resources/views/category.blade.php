@@ -9,7 +9,7 @@
 
     <div class="row">
         @foreach($category->products as $product)
-            @include('card', compact('product'))
+            @include('layouts.card', compact('product'))
         @endforeach
     </div>
 @endsection
