@@ -1,9 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', 'MainController@index')->name('home');
+//Route::get('/', 'MainController@index')->name('home');
+Auth::routes(['verify' => false, 'reset' => false, 'confirm' => false]);
+// подключение к моделям Auth. Отклбчено verify, reset, confirm
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/contacts', 'MainController@contacts')->name('contacts');
 
@@ -24,5 +28,6 @@ Route::get('/categories', 'MainController@categories')->name('categories');
 Route::get('/{category}', 'MainController@category')->name('category');
 Route::get('/{category}/{product?}','MainController@product')->name('product');
 // знак ? после имени продукта указывает на то, что это параметр не обязательный
+
 
 
