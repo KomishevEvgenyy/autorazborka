@@ -27,7 +27,7 @@ class Order extends Model
     }
 
     public function saveOrder($name, $phone){
-
+        // метод который сохраняет заказ
         if ($this->status == 0){
             $this->name = $name;
             // записываем в поле name таблицы orders значение которое пришло по request->name
@@ -43,6 +43,11 @@ class Order extends Model
             return true;
         }
         return false;
-
     }
+/*
+    public function user(){
+        // метод который делает связь с классом пользователей
+        return $this->belongsTo(User::class);
+    }
+*/
 }

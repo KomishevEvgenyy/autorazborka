@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     public function index(){
-        $products = Product::get();
+        //$products = Product::get();
         // метод который выводит главную страницу
-        return view('home', compact('products'));
+        return view('index');
     }
 
     public function contacts(){

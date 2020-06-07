@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Product;
+use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class OrderController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,9 +23,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(){
-        $products = Product::get();
-        // метод который выводит главную страницу
-        return view('home', compact('products'));
+    public function index()
+    {
+        $orders = Order::where('status', 1)->get();
+
+        return view('auth.orders.index', compact('orders'));
     }
 }

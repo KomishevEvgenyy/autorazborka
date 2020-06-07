@@ -3,20 +3,20 @@
         <div class="card-header">
             <h4 class="my-0 font-weight-normal">{{ $product->name }}</h4>
         </div>
+
         <div class="caption">
             <h1 class="card-title pricing-card-title">
-                <img width="100%" src="{{ URL::asset('/storage/engine.jpg') }}">
+                <img width="100%" src="{{ URL::asset('/storage/engine.jpg') }}" alt="Фото товара">
             </h1>
             <ul class="list-unstyled mt-3 mb-4">
                 <li>Цена: {{ $product->price }} грн.</li>
                 <li>{{ $product->description }}</li>
-
             </ul>
+
             <form action="{{ route('basket-add', $product) }}" method="POST">
-                <!-- форма перелается в метод basket-add с id продукта -->
+                <!-- форма передается в метод basket-add с id продукта -->
                 @csrf
                 <button type="submit" class="btn btn-lg btn-block btn-outline-primary">В корзину</button>
-
                 <a class="btn btn-lg btn-block btn-outline-dark"
                    href="{{ route('product', [$product->category->code, $product->code]) }}">Подробнее</a>
             </form>
