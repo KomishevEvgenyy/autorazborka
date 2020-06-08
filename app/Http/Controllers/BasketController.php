@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
@@ -37,6 +38,13 @@ class BasketController extends Controller
         }else{
             $order->products()->attach($productId);
             // добавление товара в заказ с мопощью связи где методом attach() передаем id товара
+        }
+
+        if (Auth::check()){
+            // фасад Auth с помощью метода check добавляет в поле user_id id методом id фасада Auth
+            $order->user_id = Auth::id();
+            $order->save();
+            // Сохранение даннх в поле
         }
 
         $product = Product::find($productId);

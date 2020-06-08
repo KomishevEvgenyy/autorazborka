@@ -54,6 +54,10 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'is_admin' => \App\Http\Middleware\CheckIsAdmin::class,
+        // добавлен алиас для проверки является ли пользователь админом
+        'basket_not_empty' => \App\Http\Middleware\BasketIsNotEmpty::class,
+        // добавлен алиас для проверки является ли корзина пустая
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

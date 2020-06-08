@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Schema;
 class AlterTableUsers extends Migration
 {
     /**
-     * Run the migrations.
-     *
-     * @return void
+     * ДОбавление в таблицу Users поле admin
      */
     public function up()
     {
-        //
+        // метод для добавления поля админ
+        Schema::table('users', function (Blueprint $table){
+           $table->tinyInteger('is_admin')->default(0)->after('email');
+        });
     }
 
     /**
@@ -23,6 +24,9 @@ class AlterTableUsers extends Migration
      */
     public function down()
     {
-        //
+        // метод для удаления поля админ
+        Schema::table('users', function (Blueprint $table){
+            $table->dropColumn('is_admin');
+        });
     }
 }
