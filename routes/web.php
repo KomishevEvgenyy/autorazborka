@@ -21,6 +21,7 @@ Route::group(
         Route::get('/orders', 'OrderController@index')->name('home');
     });
     Route::resource('categories', 'CategoryController');
+    Route::resource('products', 'ProductController');
 });
 // middleware - прослойка между маршрутом и контроллером. Перед тем как зайти на страницу home сначало будет
 // выполенено условия middleware. auth означает если пользователь зарегистрирован то его отправит по указаном маршруту

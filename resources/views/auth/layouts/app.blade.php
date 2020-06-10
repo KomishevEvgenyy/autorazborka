@@ -33,7 +33,7 @@
                                 Категории
                             </a>
                         </li>
-                        <li><a class="navbar-brand" href="#">
+                        <li><a class="navbar-brand" href="{{ route('products.index') }}">
                                 Товары
                             </a>
                         </li>

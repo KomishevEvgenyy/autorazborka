@@ -14,6 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        // метод который выводит все категории
         $categories = Category::get();
         return view('auth.categories.index', compact('categories'));
     }
@@ -37,7 +38,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //метод для сохранения категории
+        // метод для сохранения категории
         Category::create($request->all());
         return redirect()->route('categories.index');
     }
@@ -50,7 +51,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        // метод который для отображения категории
+        // метод для отображения категории
         return view('auth.categories.show', compact('category'));
     }
 
