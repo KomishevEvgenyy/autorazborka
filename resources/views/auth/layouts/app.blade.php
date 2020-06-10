@@ -26,6 +26,24 @@
                 <a class="navbar-brand" href="{{ route('index') }}">
                     Вернуться на сайт
                 </a>
+                @auth
+                <div class="collapse navbar-collapse pl-5" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a class="navbar-brand" href="{{ route('categories.index') }}">
+                                Категории
+                            </a>
+                        </li>
+                        <li><a class="navbar-brand" href="#">
+                                Товары
+                            </a>
+                        </li>
+                        <li><a class="navbar-brand" href="{{ route('home') }}">
+                                Заказы
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                @endauth
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -74,7 +92,9 @@
 
         <main class="py-4">
             <div class="container">
-                @yield('content')
+                <div class="row justify-content-center">
+                    @yield('content')
+                </div>
             </div>
         </main>
     </div>

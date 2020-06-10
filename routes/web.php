@@ -10,10 +10,17 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'MainController@index')->name('index');
 
-Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function (){
-    Route::group(['middleware' =>'is_admin'], function (){
+Route::group(
+        ['middleware' => 'auth',
+        'namespace' => 'Admin',
+        'prefix' => 'admin'],
+    function (){
+    Route::group(
+        ['middleware' =>'is_admin'],
+        function (){
         Route::get('/orders', 'OrderController@index')->name('home');
     });
+    Route::resource('categories', 'CategoryController');
 });
 // middleware - прослойка между маршрутом и контроллером. Перед тем как зайти на страницу home сначало будет
 // выполенено условия middleware. auth означает если пользователь зарегистрирован то его отправит по указаном маршруту

@@ -46,7 +46,7 @@
         </table>
         <br>
         <div class="btn-group pull-right" role="group">
-            <a type="submit" class="btn btn-success" role="button"
+            <a class="btn btn-success" role="button"
                href="{{ route('basket-place') }}">Оформить заказ
             </a>
         </div>
