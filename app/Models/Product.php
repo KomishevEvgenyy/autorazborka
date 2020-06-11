@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $fillable = ['code', 'name', 'description', 'price', 'image', 'category_id'];
+    // перечисляем поля которые можно будет заполнять при создании товаров через админ панель
     public function category(){
         //  метод который устанавливает связи с молделью Category со связью один к одному так как у товара одна категория
         // возвращает одну категорию

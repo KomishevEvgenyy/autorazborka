@@ -5,15 +5,14 @@
 @section('content')
     <div class="mb-5">
         <h1 class="text-center">
-            Категории товаров
+            Выберите марку вашего автомобиля
         </h1>
     </div>
-
-        <div class="row">
+        <div class="row ml-5">
             @foreach($categories as $category)
-                <div class="col-3">
+                <div class="col-2 mr-3">
                 <a href="{{ route('category', $category->code) }}">
-                    <img width="150" src="{{ URL::asset('/storage/'.$category->code).'.jpg' }}">
+                    <img width="180" src="{{ Storage::url( $category->image) }}">
                 </a>
                 </div>
             @endforeach

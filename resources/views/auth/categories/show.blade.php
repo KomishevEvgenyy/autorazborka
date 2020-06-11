@@ -30,8 +30,9 @@
             <tr>
                 <td>Картинка</td>
                 <td>
-                    <img width="150" src="{{ URL::asset('/storage/'.$category->code).'.jpg' }}">
+                    <img width="150" src="{{ Storage::url( $category->image) }}">
                 </td>
+                <!-- URL::asset('/storage/'.$category->code).'.jpg' -->
             </tr>
             <tr>
                 <td>Колличество товаров</td>

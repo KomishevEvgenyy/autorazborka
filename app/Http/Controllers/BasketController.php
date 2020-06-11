@@ -99,9 +99,9 @@ class BasketController extends Controller
             //  Если значение в заказе не null то методом findOrFail
             // находим заказ и записываем его в переменную $order
             $order = Order::findOrFail($orderId);
+            return view('basket', compact('order'));
         }
-
-        return view('basket', compact('order'));
+        return view('basket');
     }
 
     public function basketPlace(){

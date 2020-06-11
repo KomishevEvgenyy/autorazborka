@@ -28,13 +28,19 @@
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="code">Код:</label>
                     <div class="col-sm-6">
+                        @error('code')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <input type="text" class="form-control" id="code" name="code" value="@isset($category) {{$category->code}} @endisset">
                     </div>
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label class="col-sm-2 col-form-label" for="name">Введите модель:</label>
+                    <label class="col-sm-2 col-form-label" for="name">Введите марку:</label>
                     <div class="col-sm-6">
+                        @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <input type="text" class="form-control" id="name" name="name" value="@isset($category) {{$category->name}} @endisset">
                     </div>
                 </div>
@@ -42,6 +48,9 @@
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="description">Описание:</label>
                     <div class="col-sm-6">
+                        @error('description')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <textarea id="description" name="description" cols="72" rows="7">@isset($category) {{ $category->description }} @endisset</textarea>
                     </div>
                 </div>

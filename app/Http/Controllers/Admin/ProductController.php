@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -44,7 +45,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // метод для сохранения товара
-        Product::create($request->all());
+        $path = $request->file('image')->store('products');
+        $params = $request->all();
+        $params['image'] = $path;
+        Product::create($params);
+
         return redirect()->route('products.index');
     }
 
@@ -84,7 +89,13 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         // метод для редактирования товара
-        $product->update($request->all());
+        Storage::delete($product->image);
+        // с фасадом Storage методом delete удаляем картинку
+        $path = $request->file('image')->store('products');
+        $params = $request->all();
+        $params['image'] = $path;
+
+        $product->update($params);
         return redirect()->route('products.index');
     }
 

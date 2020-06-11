@@ -9,9 +9,9 @@
 @section('content')
     <div class="col-md-12">
         @isset($product)
-            <h1>Редактировать категорию <b>{{ $product->name }}</b></h1>
+            <h1>Редактировать товар <b>{{ $product->name }}</b></h1>
         @else
-                <h1>Добавить категорию</h1>
+                <h1>Добавить товар</h1>
         @endisset
         <form method="POST" enctype="multipart/form-data"
             @isset($product)
@@ -78,7 +78,7 @@
                             <input type="text" class="form-control" id="name" name="name" value="@isset($product) {{$product->price}} @endisset">
                         </div>
                     </div>
-                <button class="btn btn-success">Сохранить</button>
+                <button class="btn btn-success mt-4">Сохранить</button>
             </div>
         </form>
     </div>

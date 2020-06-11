@@ -3,6 +3,7 @@
 @section('title-block', 'Корзина')
 
 @section('content')
+    @isset($order)
     <h1>Корзина</h1>
     <p>Оформление заказа</p>
     <div class="panel">
@@ -50,5 +51,8 @@
                href="{{ route('basket-place') }}">Оформить заказ
             </a>
         </div>
+        @else
+            <h3>Корзина пустая</h3>
+            @endisset
     </div>
 @endsection
