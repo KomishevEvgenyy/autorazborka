@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -42,12 +43,15 @@ class ProductController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         // метод для сохранения товара
-        $path = $request->file('image')->store('products');
         $params = $request->all();
-        $params['image'] = $path;
+        unset($params['image']);
+        if($request->has('image')){
+            $path = $request->file('image')->store('products');
+            $params['image'] = $path;
+        }
         Product::create($params);
 
         return redirect()->route('products.index');
@@ -86,14 +90,20 @@ class ProductController extends Controller
      * @param Product $product
      * @return void
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
         // метод для редактирования товара
-        Storage::delete($product->image);
+        $params = $request->all();
+        if($request->has('image')){
+            $path = $request->file('image')->store('products');
+            $params['image'] = $path;
+        }
+
+        /*Storage::delete($product->image);
         // с фасадом Storage методом delete удаляем картинку
         $path = $request->file('image')->store('products');
         $params = $request->all();
-        $params['image'] = $path;
+        $params['image'] = $path;*/
 
         $product->update($params);
         return redirect()->route('products.index');

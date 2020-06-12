@@ -87,11 +87,17 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         //  метод для редактирования категории
-        Storage::delete($category->image);
-        // с фасадом Storage методом delete удаляем картинку
-        $path = $request->file('image')->store('categories');
         $params = $request->all();
-        $params['image'] = $path;
+        if($request->has('image')){
+            $path = $request->file('image')->store('categories');
+            $params['image'] = $path;
+        }
+
+       // Storage::delete($category->image);
+        // с фасадом Storage методом delete удаляем картинку
+        //$path = $request->file('image')->store('categories');
+        //$params = $request->all();
+        //$params['image'] = $path;
 
         $category->update($params);
         // после внесения изменений в категорию осуществляется редирект на страницу index

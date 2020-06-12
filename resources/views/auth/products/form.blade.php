@@ -28,6 +28,9 @@
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="code">Код:</label>
                     <div class="col-sm-6">
+                        @error('code')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <input type="text" class="form-control" id="code" name="code" value="@isset($product) {{$product->code}} @endisset">
                     </div>
                 </div>
@@ -35,6 +38,9 @@
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="name">Название:</label>
                     <div class="col-sm-6">
+                        @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <input type="text" class="form-control" id="name" name="name" value="@isset($product) {{$product->name}} @endisset">
                     </div>
                 </div>
@@ -59,6 +65,9 @@
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="description">Описание:</label>
                     <div class="col-sm-6">
+                        @error('description')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <textarea id="description" name="description" cols="72" rows="7">@isset($product) {{ $product->description }} @endisset</textarea>
                     </div>
                 </div>
@@ -73,9 +82,12 @@
                 </div>
                     <br>
                     <div class="input-group row">
-                        <label class="col-sm-2 col-form-label" for="name">Цена:</label>
+                        <label class="col-sm-2 col-form-label" for="price">Цена:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="name" name="name" value="@isset($product) {{$product->price}} @endisset">
+                            @error('price')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <input type="text" class="form-control" id="price" name="price" value="@isset($product) {{$product->price}} @endisset">
                         </div>
                     </div>
                 <button class="btn btn-success mt-4">Сохранить</button>
