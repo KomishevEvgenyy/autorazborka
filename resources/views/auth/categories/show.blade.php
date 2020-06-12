@@ -35,7 +35,7 @@
                 <!-- URL::asset('/storage/'.$category->code).'.jpg' -->
             </tr>
             <tr>
-                <td>Колличество товаров</td>
+                <td>Колличество категорий</td>
                 <td>{{ $category->products->count() }}</td>
             </tr>
             </tbody>

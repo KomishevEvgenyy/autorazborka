@@ -94,16 +94,12 @@ class ProductController extends Controller
     {
         // метод для редактирования товара
         $params = $request->all();
+        unset($params['image']);
         if($request->has('image')){
+            Storage::delete($product->image);
             $path = $request->file('image')->store('products');
             $params['image'] = $path;
         }
-
-        /*Storage::delete($product->image);
-        // с фасадом Storage методом delete удаляем картинку
-        $path = $request->file('image')->store('products');
-        $params = $request->all();
-        $params['image'] = $path;*/
 
         $product->update($params);
         return redirect()->route('products.index');

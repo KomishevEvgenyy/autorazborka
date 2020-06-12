@@ -31,7 +31,8 @@
                         @error('code')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="text" class="form-control" id="code" name="code" value="@isset($product) {{$product->code}} @endisset">
+                        <input type="text" class="form-control" id="code" name="code"
+                               value=" {{ old('code', isset($product) ? $product->code:null) }} ">
                     </div>
                 </div>
                 <br>
@@ -41,7 +42,8 @@
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="text" class="form-control" id="name" name="name" value="@isset($product) {{$product->name}} @endisset">
+                        <input type="text" class="form-control" id="name" name="name"
+                               value=" {{ old('name', isset($product) ? $product->name:null) }} ">
                     </div>
                 </div>
                 <br>
@@ -68,7 +70,9 @@
                         @error('description')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <textarea id="description" name="description" cols="72" rows="7">@isset($product) {{ $product->description }} @endisset</textarea>
+                        <textarea id="description" name="description" cols="72" rows="7">
+                            {{ old('description', isset($product) ? $product->description:null) }}
+                        </textarea>
                     </div>
                 </div>
                 <br>
@@ -87,7 +91,8 @@
                             @error('price')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-                            <input type="text" class="form-control" id="price" name="price" value="@isset($product) {{$product->price}} @endisset">
+                            <input type="text" class="form-control" id="price" name="price"
+                                   value=" {{ old('price', isset($product) ? $product->price:null) }} ">
                         </div>
                     </div>
                 <button class="btn btn-success mt-4">Сохранить</button>

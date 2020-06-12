@@ -31,7 +31,8 @@
                         @error('code')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="text" class="form-control" id="code" name="code" value="@isset($category) {{$category->code}} @endisset">
+                        <input type="text" class="form-control" id="code" name="code"
+                               value=" {{ old('code', isset($category) ? $category->code :null) }} ">
                     </div>
                 </div>
                 <br>
@@ -41,7 +42,8 @@
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="text" class="form-control" id="name" name="name" value="@isset($category) {{$category->name}} @endisset">
+                        <input type="text" class="form-control" id="name" name="name"
+                               value=" {{ old('name', isset($category) ? $category->name:null) }} ">
                     </div>
                 </div>
                 <br>
@@ -51,7 +53,9 @@
                         @error('description')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <textarea id="description" name="description" cols="72" rows="7">@isset($category) {{ $category->description }} @endisset</textarea>
+                        <textarea id="description" name="description" cols="72" rows="7">
+                            {{ old('description', isset($category) ? $category->description:null) }}
+                        </textarea>
                     </div>
                 </div>
                 <br>

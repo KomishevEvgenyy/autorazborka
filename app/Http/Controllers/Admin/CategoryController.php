@@ -88,16 +88,12 @@ class CategoryController extends Controller
     {
         //  метод для редактирования категории
         $params = $request->all();
+        unset($params['image']);
         if($request->has('image')){
+            Storage::delete($category->image);
             $path = $request->file('image')->store('categories');
             $params['image'] = $path;
         }
-
-       // Storage::delete($category->image);
-        // с фасадом Storage методом delete удаляем картинку
-        //$path = $request->file('image')->store('categories');
-        //$params = $request->all();
-        //$params['image'] = $path;
 
         $category->update($params);
         // после внесения изменений в категорию осуществляется редирект на страницу index
