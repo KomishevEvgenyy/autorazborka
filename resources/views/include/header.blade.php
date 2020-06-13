@@ -11,7 +11,11 @@
     @endguest
     @auth
         <nav class="mr-md-3">
-            <a class="btn btn-primary" href="{{ route('home') }}">Панель администратора</a>
+            @if(Auth::user()->isAdmin())
+                <a class="btn btn-primary" href="{{ route('home') }}">Панель администратора</a>
+           @else
+                <a class="btn btn-primary" href="{{ route('person.orders.index') }}">Мои заказы</a>
+            @endif
             <a class="btn btn-primary" href="{{ route('logout') }}">Вийти</a>
         </nav>
     @endauth

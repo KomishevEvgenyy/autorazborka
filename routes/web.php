@@ -10,21 +10,33 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'MainController@index')->name('index');
 
-Route::group(
-        ['middleware' => 'auth',
-        'namespace' => 'Admin',
-        'prefix' => 'admin'],
-    function (){
+Route::middleware(['auth'])->group(function(){
+    // маршрут для зарегистрированых пользователей
     Route::group(
-        ['middleware' =>'is_admin'],
-        function (){
-        Route::get('/orders', 'OrderController@index')->name('home');
+        // маршрут для пользователей
+        ['namespace' => 'Person',
+            'prefix' => 'person',
+            'as' => 'person.'], function(){
+        Route::get('/orders', 'OrderController@index')->name('orders.index');
+        Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
     });
-    Route::resource('categories', 'CategoryController');
-    Route::resource('products', 'ProductController');
+    Route::group(
+    // маршрут для администратора
+        ['namespace' => 'Admin',
+            'prefix' => 'admin'], function (){
+            Route::group(
+                ['middleware' =>'is_admin'],
+                // middleware - прослойка между маршрутом и контроллером. Перед тем как зайти на страницу home сначало будет
+// выполенено условия middleware.
+                function (){
+                    Route::get('/orders', 'OrderController@index')->name('home');
+                    Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+                });
+        Route::resource('categories', 'CategoryController');
+        Route::resource('products', 'ProductController');
+        });
 });
-// middleware - прослойка между маршрутом и контроллером. Перед тем как зайти на страницу home сначало будет
-// выполенено условия middleware. auth означает если пользователь зарегистрирован то его отправит по указаном маршруту
+
 
 Route::get('/contacts', 'MainController@contacts')->name('contacts');
 
@@ -33,9 +45,11 @@ Route::get('/about', 'MainController@about')->name('about');
 Route::get('/car_sale', 'MainController@car_sale')->name('car_sale');
 
 Route::group(['prefix'=>'basket'], function (){
+    // маршрут для корзины
     Route::post('/add/{id}', 'BasketController@basketAdd')->name('basket-add');
     // маршрут который будет добавлять товары в корзину
     Route::group(['middleware' =>'basket_not_empty'], function(){
+        // маршрут для проверки наличия заказа в корзине
         Route::get('/', 'BasketController@basket')->name('basket');
         Route::get('/place', 'BasketController@basketPlace')->name('basket-place');
         Route::post('/remove/{id}', 'BasketController@basketRemove')->name('basket-remove');
@@ -44,8 +58,6 @@ Route::group(['prefix'=>'basket'], function (){
         // маршрут для подтверждения заказа
     });
 });
-
-
 
 Route::get('/categories', 'MainController@categories')->name('categories');
 Route::get('/{category}', 'MainController@category')->name('category');

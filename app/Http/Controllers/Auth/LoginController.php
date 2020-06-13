@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -22,10 +23,13 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     protected function redirectTo(){
-        // После авторизации происходит редирект на страницу home
-        return route('home');
+        // после входа admin пользователя перенаправляет на страницу home, обычного пользователя на главную страницу
+        if(Auth::user()->isAdmin()){
+            return route('home');
+        } else{
+            return route('index');
+        }
     }
-
 
     /**
      * Create a new controller instance.

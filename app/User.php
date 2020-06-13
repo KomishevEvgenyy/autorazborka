@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Order;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -40,5 +41,10 @@ class User extends Authenticatable
     public function isAdmin() {
         // метод который проверяет является ли пользователь админом
         return $this->is_admin === 1;
+    }
+
+    public function orders() {
+        // метод который связывает таблицу user с таблицей orders
+        return $this->hasMany(Order::class);
     }
 }

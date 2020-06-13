@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,7 +26,12 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     protected function redirectTo(){
-        return route('home');
+    // после регистрации admin пользователя перенаправляет на страницу home, обычного пользователя на главную страницу
+        if(Auth::user()->isAdmin()){
+            return route('home');
+        } else{
+            return route('index');
+        }
     }
 
     /**
