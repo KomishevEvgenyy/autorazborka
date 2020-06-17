@@ -6,7 +6,7 @@
 
         <div class="caption">
             <h1 class="card-title pricing-card-title">
-                <img width="100%" src="{{ URL::asset('/storage/engine.jpg') }}" alt="Фото товара">
+                <img width="100%" src="{{ Storage::url( $product->image) }}" alt="Фото товара">
             </h1>
             <ul class="list-unstyled mt-3 mb-4">
                 <li>Цена: {{ $product->price }} грн.</li>

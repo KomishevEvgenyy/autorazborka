@@ -10933,3 +10933,10 @@ a.text-dark:focus {
   }
 }
 
+a.phone_clients:hover,
+a.phone_clients:link,
+a.phone_clients:visited {
+  color: black;
+  text-decoration: none;
+}
+

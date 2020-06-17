@@ -8,7 +8,7 @@
             <h1>{{ $product->name }}</h1>
             <h2>{{ $product->category->name }}</h2>
             <p>Цена: <b>{{ $product->price }} грн.</b></p>
-            <img src="{{ URL::asset('/storage/engine.jpg') }}">
+            <img src="{{ Storage::url( $product->image) }}">
             <p class="pt-4">{{ $product->description }}</p>
 
             <form action="{{ route('basket-add', $product) }}" method="POST">

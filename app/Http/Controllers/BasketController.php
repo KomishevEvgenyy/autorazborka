@@ -68,8 +68,8 @@ class BasketController extends Controller
         $order = Order::find($orderId);
         // находим товар который нужно удалить
 
-        if ($order->products()->contains($productId)){
-            // елси в корзине имеется такой же продукт выполняем условие
+        if ($order->products->contains($productId)){
+            // если в корзине имеется такой же продукт выполняем условие
             $pivotRow = $order->products()->where('product_id', $productId)->first()->pivot;
             // создаем SQL запрос где ищем первый продукт где через pivot добираемся до нужной нам строки
             // после чего данную запись заносим в переменную pivotRow

@@ -19,7 +19,7 @@ class OrderController extends Controller
 
     public function show(Order $order){
         // метод для вывода заказа клиента в шаблон
-        if(Auth::user()->orders->contains($order)){
+        if(!Auth::user()->orders->contains($order)){
             return back();
         }
         return view('auth.orders.show', compact('order'));

@@ -31,11 +31,11 @@
                     <td>{{ $order->getFullPrice() }} грн.</td>
                     <td>
                         <div class="btn-group" role="group">
-                            @admin
+                            @if(Auth::user()->isAdmin())
                                 <a class="btn btn-success" href="{{ route('orders.show', $order) }}">Открыть</a>
                             @else
                                 <a class="btn btn-success" href="{{ route('person.orders.show', $order) }}">Открыть</a>
-                            @endadmin
+                            @endif
                         </div>
                     </td>
                 </tr>
