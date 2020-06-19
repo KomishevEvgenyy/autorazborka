@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         // метод который выводит все категории
-        $categories = Category::get();
+        $categories = Category::paginate(5);
         return view('auth.categories.index', compact('categories'));
     }
 

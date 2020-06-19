@@ -38,6 +38,7 @@
                     @endforeach
             </tbody>
         </table>
+
         <div class="btn-group" role="group">
             <a class="btn btn-success" href="{{ route('categories.create') }}">Добваить категорию</a>
         </div>
