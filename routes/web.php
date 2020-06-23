@@ -20,10 +20,12 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/orders', 'OrderController@index')->name('orders.index');
         Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
     });
+
     Route::group(
-    // маршрут для администратора
         ['namespace' => 'Admin',
-            'prefix' => 'admin'], function (){
+            'prefix' => 'admin'],
+        // маршрут для администратора
+        function (){
             Route::group(
                 ['middleware' =>'is_admin'],
                 // middleware - прослойка между маршрутом и контроллером. Перед тем как зайти на страницу home сначало будет
@@ -34,6 +36,7 @@ Route::middleware(['auth'])->group(function(){
                 });
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
+        Route::resource('car_sale', 'CarSaleController');
         });
 });
 

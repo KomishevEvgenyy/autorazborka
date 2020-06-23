@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
+        @isset($categories)
         <h1>Заказы</h1>
         <table class="table text-center">
             <tbody>
@@ -42,5 +43,8 @@
         <div class="btn-group" role="group">
             <a class="btn btn-success" href="{{ route('categories.create') }}">Добваить категорию</a>
         </div>
+        @else
+            <h3>Категории отсутствуют</h3>
+        @endisset
     </div>
 @endsection

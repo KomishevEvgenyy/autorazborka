@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
+        @isset($orders)
         <h1>Заказы</h1>
         <table class="table">
             <tbody>
@@ -44,4 +45,7 @@
         </table>
         {{ $orders->links() }}
     </div>
+    @else
+    <h3>Заказы отсутствуют</h3>
+    @endisset
 @endsection

@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
+        @isset($products)
         <h1>Заказы</h1>
         <table class="table text-center">
             <tbody>
@@ -53,5 +54,8 @@
         <div class="btn-group" role="group">
             <a class="btn btn-success" href="{{ route('products.create') }}">Добавить товар</a>
         </div>
+        @else
+        <h3>Продукты отсутствуют</h3>
+        @endisset
     </div>
 @endsection

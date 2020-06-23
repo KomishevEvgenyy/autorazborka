@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="mb-5">
+        @isset($categories)
         <h1 class="text-center">
             Выберите марку вашего автомобиля
         </h1>
@@ -16,5 +17,9 @@
                 </a>
                 </div>
             @endforeach
+            @else
+                <h3>Категории отсутствуют</h3>
+                @endisset
+
         </div>
 @endsection

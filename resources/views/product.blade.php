@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="container">
+        @isset($product)
         <div class="starter-template text-left">
             <h1>{{ $product->name }}</h1>
             <h2>{{ $product->category->name }}</h2>
@@ -16,5 +17,8 @@
                 <button type="submit" class="btn btn-success" role="button">Добавить в корзину</button>
             </form>
         </div>
+        @else
+            <h3>Товар отсутствует</h3>
+        @endisset
     </div>
 @endsection

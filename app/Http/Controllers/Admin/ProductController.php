@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
         // метод который выводит все продукты
         $categories = Category::get();
-        $products = Product::paginate(1);
+        $products = Product::paginate(10);
         return view('auth.products.index', compact('products', 'categories'));
     }
 

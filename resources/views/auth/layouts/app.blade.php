@@ -41,6 +41,10 @@
                                 Заказы
                             </a>
                         </li>
+                        <li><a class="navbar-brand" href="{{ route('car_sale.index') }}">
+                                Б/у автомобили
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 @endadmin
