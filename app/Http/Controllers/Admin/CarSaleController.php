@@ -17,7 +17,7 @@ class CarSaleController extends Controller
      */
     public function index()
     {
-        //
+        // метод который выводит все автомобили
         $carSale = CarSale::get();
         return view('auth.car_sales.index ', compact('carSale'));
     }
@@ -29,9 +29,9 @@ class CarSaleController extends Controller
      */
     public function create()
     {
-        //
+        // метод для создания товара (автомобиль)
         $carSales = CarSale::get();
-        return view('car_sale', compact('carSales'));
+        return view('auth.car_sales.form', compact('carSales'));
     }
 
     /**
@@ -42,19 +42,18 @@ class CarSaleController extends Controller
      */
     public function store(CarSaleRequest $request)
     {
-        //
         // метод для сохранения товара
         $params = $request->all();
         unset($params['image1']);
-        unset($params['image2']);
+        /*unset($params['image2']);
         unset($params['image3']);
         unset($params['image4']);
-        unset($params['image5']);
+        unset($params['image5']);*/
 
         if($request->has('image1')) {
             $path1 = $request->file('image1')->store('car_sales');
             $params['image1'] = $path1;
-        }
+        }/*
         if($request->has('image2')) {
             $path2 = $request->file('image2')->store('car_sales');
             $params['image2'] = $path2;
@@ -70,10 +69,10 @@ class CarSaleController extends Controller
         if($request->has('image5')){
             $path5 = $request->file('image5')->store('car_sales');
             $params['image5'] = $path5;
-        }
+        }*/
         CarSale::create($params);
 
-        return redirect()->route('index');
+        return redirect()->route('car_sales.index');
     }
 
     /**
@@ -84,9 +83,8 @@ class CarSaleController extends Controller
      */
     public function show(CarSale $carSale)
     {
-        //
-        $carSale = CarSale::get();
-        return view('car_sale', compact('carSale'));
+        // метод для отображения товара
+        return view('auth.car_sales.show', compact('carSale'));
     }
 
     /**
@@ -97,9 +95,9 @@ class CarSaleController extends Controller
      */
     public function edit(CarSale $carSale)
     {
-        //
-        $carSale = CarSale::get();
-        return view('car_sale', compact('carSale'));
+        // метод для внесения изменений в товар
+
+        return view('auth.car_sales.form', compact('carSale'));
     }
 
     /**
@@ -111,7 +109,7 @@ class CarSaleController extends Controller
      */
     public function update(CarSaleRequest $request, CarSale $carSale)
     {
-        //
+        // метод для редактирования товара
         $params = $request->all();
         unset($params['image1']);
         unset($params['image2']);
@@ -146,7 +144,7 @@ class CarSaleController extends Controller
         }
         CarSale::update($params);
 
-        return redirect()->route('index');
+        return redirect()->route('car_sales.index');
     }
 
     /**
@@ -157,8 +155,8 @@ class CarSaleController extends Controller
      */
     public function destroy(CarSale $carSale)
     {
-        //
+        // метод для удаления товара
         $carSale->delete();
-        return redirect()->route('index');
+        return redirect()->route('car_sales.index');
     }
 }

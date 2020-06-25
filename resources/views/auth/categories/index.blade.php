@@ -41,10 +41,13 @@
         </table>
 
         <div class="btn-group" role="group">
-            <a class="btn btn-success" href="{{ route('categories.create') }}">Добваить категорию</a>
+            <a class="btn btn-success" href="{{ route('categories.create') }}">Добавить категорию</a>
         </div>
         @else
             <h3>Категории отсутствуют</h3>
+            <div class="btn-group" role="group">
+                <a class="btn btn-success" href="{{ route('categories.create') }}">Добавить</a>
+            </div>
         @endisset
     </div>
 @endsection

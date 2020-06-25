@@ -3,7 +3,7 @@
 @isset($category)
     @section('title-block', 'Редактировать категорию '. $category->name)
 @else
-    @section('title-block', 'Доьавить атегорию')
+    @section('title-block', 'Добавить категорию')
 @endisset
 
 @section('content')

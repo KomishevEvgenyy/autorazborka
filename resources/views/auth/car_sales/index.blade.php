@@ -39,12 +39,14 @@
             @endforeach
             </tbody>
         </table>
-
         <div class="btn-group" role="group">
-            <a class="btn btn-success" href="{{ route('car_sale.create') }}">Добваить автомобиль</a>
+            <a class="btn btn-success" href="{{ route('car_sale.create') }}">Добавить автомобиль</a>
         </div>
         @else
             <p>Б/у автомобилей в продаже нет</p>
+            <div class="btn-group" role="group">
+                <a class="btn btn-success" href="{{ route('car_sale.create') }}">Добавить автомобиль</a>
+            </div>
         @endisset
     </div>
 @endsection

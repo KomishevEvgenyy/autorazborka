@@ -52,8 +52,8 @@ class MainController extends Controller
 
     public function car_sale(){
         // метод который выводит страницу с Б/у автомобилями
-        $car_sale = CarSale::get();
-        return view('car_sale', compact('car_sale'));
+        $carsSale = CarSale::get();
+        return view('car_sale', compact('carsSale'));
     }
 
 }

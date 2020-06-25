@@ -1,9 +1,9 @@
 @extends('auth.layouts.app')
 
 @isset($product)
-    @section('title-block', 'Редактировать категорию '. $product->name)
+    @section('title-block', 'Редактировать товар '. $product->name)
 @else
-    @section('title-block', 'Доьавить атегорию')
+    @section('title-block', 'Добавить товар')
 @endisset
 
 @section('content')

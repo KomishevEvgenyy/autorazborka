@@ -55,7 +55,10 @@
             <a class="btn btn-success" href="{{ route('products.create') }}">Добавить товар</a>
         </div>
         @else
-        <h3>Продукты отсутствуют</h3>
+        <h3>Товары отсутствуют</h3>
+            <div class="btn-group" role="group">
+                <a class="btn btn-success" href="{{ route('products.create') }}">Добавить</a>
+            </div>
         @endisset
     </div>
 @endsection
