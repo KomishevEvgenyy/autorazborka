@@ -26,9 +26,9 @@
                     <td>{{ $car_sale->price }}</td>
                     <td>
                         <div class="btn-group" role="group">
-                            <form method="POST" action="{{ route('car_sale.destroy', $car_sale) }}">
-                                <a class="btn btn-success mr-3" href="{{ route('car_sale.show', $car_sale) }}">Открыть</a>
-                                <a class="btn btn-warning mr-3" href="{{ route('car_sale.edit', $car_sale) }}">Редактировать</a>
+                            <form method="POST" action="{{ route('car_sales.destroy', $car_sale) }}">
+                                <a class="btn btn-success mr-3" href="{{ route('car_sales.show', $car_sale) }}">Открыть</a>
+                                <a class="btn btn-warning mr-3" href="{{ route('car_sales.edit', $car_sale) }}">Редактировать</a>
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-danger" value="Удалить" type="submit">
@@ -39,13 +39,14 @@
             @endforeach
             </tbody>
         </table>
+        {{$carSale->links()}}
         <div class="btn-group" role="group">
-            <a class="btn btn-success" href="{{ route('car_sale.create') }}">Добавить автомобиль</a>
+            <a class="btn btn-success" href="{{ route('car_sales.create') }}">Добавить автомобиль</a>
         </div>
         @else
             <p>Б/у автомобилей в продаже нет</p>
             <div class="btn-group" role="group">
-                <a class="btn btn-success" href="{{ route('car_sale.create') }}">Добавить автомобиль</a>
+                <a class="btn btn-success" href="{{ route('car_sales.create') }}">Добавить автомобиль</a>
             </div>
         @endisset
     </div>

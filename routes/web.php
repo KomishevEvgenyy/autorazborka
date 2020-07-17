@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function(){
                 });
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
-        Route::resource('car_sale', 'CarSaleController');
+        Route::resource('car_sales', 'CarSaleController');
         });
 });
 

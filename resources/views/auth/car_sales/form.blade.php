@@ -14,10 +14,10 @@
             <h1>Добавить автомобиль</h1>
         @endisset
         <form method="POST" enctype="multipart/form-data"
-              @isset($carSale)
-              action="{{ route('car_sale.update', $carSale) }}"
-              @else
-              action="{{ route('car_sale.store') }}"
+            @isset($carSale)
+                action="{{ route('car_sales.update', $carSale) }}"
+            @else
+                action="{{ route('car_sales.store') }}"
             @endisset
         >
             <div>
@@ -70,5 +70,6 @@
                 <button class="btn btn-success">Сохранить</button>
             </div>
         </form>
+
     </div>
 @endsection

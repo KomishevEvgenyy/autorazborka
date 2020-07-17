@@ -30,7 +30,7 @@
             <tr>
                 <td>Фото</td>
                 <td>
-                    <img width="150" src="{{ Storage::url( $carSale->image1) }}">
+                    <img width="150" src="{{ Storage::url( $carSale->image) }}">
                 </td>
                 <!-- URL::asset('/storage/'.$category->code).'.jpg' -->
             </tr>

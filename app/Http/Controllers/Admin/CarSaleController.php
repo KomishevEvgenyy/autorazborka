@@ -18,8 +18,8 @@ class CarSaleController extends Controller
     public function index()
     {
         // метод который выводит все автомобили
-        $carSale = CarSale::get();
-        return view('auth.car_sales.index ', compact('carSale'));
+        $carSale = CarSale::paginate(10);
+        return view('auth.car_sales.index', compact('carSale'));
     }
 
     /**
@@ -30,8 +30,7 @@ class CarSaleController extends Controller
     public function create()
     {
         // метод для создания товара (автомобиль)
-        $carSales = CarSale::get();
-        return view('auth.car_sales.form', compact('carSales'));
+        return view('auth.car_sales.form');
     }
 
     /**
@@ -42,34 +41,15 @@ class CarSaleController extends Controller
      */
     public function store(CarSaleRequest $request)
     {
+        dd($request);
         // метод для сохранения товара
         $params = $request->all();
-        unset($params['image1']);
-        /*unset($params['image2']);
-        unset($params['image3']);
-        unset($params['image4']);
-        unset($params['image5']);*/
+        unset($params['image']);
 
-        if($request->has('image1')) {
-            $path1 = $request->file('image1')->store('car_sales');
-            $params['image1'] = $path1;
-        }/*
-        if($request->has('image2')) {
-            $path2 = $request->file('image2')->store('car_sales');
-            $params['image2'] = $path2;
+        if($request->has('image')) {
+            $path = $request->file('image')->store('car_sales');
+            $params['image'] = $path;
         }
-        if($request->has('image3')) {
-            $path3 = $request->file('image3')->store('car_sales');
-            $params['image3'] = $path3;
-        }
-        if($request->has('image4')){
-            $path4 = $request->file('image4')->store('car_sales');
-            $params['image4'] = $path4;
-        }
-        if($request->has('image5')){
-            $path5 = $request->file('image5')->store('car_sales');
-            $params['image5'] = $path5;
-        }*/
         CarSale::create($params);
 
         return redirect()->route('car_sales.index');
@@ -96,7 +76,6 @@ class CarSaleController extends Controller
     public function edit(CarSale $carSale)
     {
         // метод для внесения изменений в товар
-
         return view('auth.car_sales.form', compact('carSale'));
     }
 
@@ -111,38 +90,14 @@ class CarSaleController extends Controller
     {
         // метод для редактирования товара
         $params = $request->all();
-        unset($params['image1']);
-        unset($params['image2']);
-        unset($params['image3']);
-        unset($params['image4']);
-        unset($params['image5']);
+        unset($params['image']);
+        if($request->has('image')) {
+            Storage::delete($carSale->image);
+            $path = $request->file('image')->store('car_sales');
+            $params['image'] = $path;
+        }
 
-        if($request->has('image1')) {
-            Storage::delete($carSale->image1);
-            $path1 = $request->file('image1')->store('car_sales');
-            $params['image1'] = $path1;
-        }
-        if($request->has('image2')) {
-            Storage::delete($carSale->image2);
-            $path2 = $request->file('image2')->store('car_sales');
-            $params['image2'] = $path2;
-        }
-        if($request->has('image3')) {
-            Storage::delete($carSale->image3);
-            $path3 = $request->file('image3')->store('car_sales');
-            $params['image3'] = $path3;
-        }
-        if($request->has('image4')){
-            Storage::delete($carSale->image4);
-            $path4 = $request->file('image4')->store('car_sales');
-            $params['image4'] = $path4;
-        }
-        if($request->has('image5')){
-            Storage::delete($carSale->image5);
-            $path5 = $request->file('image5')->store('car_sales');
-            $params['image5'] = $path5;
-        }
-        CarSale::update($params);
+        $carSale->update($params);
 
         return redirect()->route('car_sales.index');
     }

@@ -18,11 +18,7 @@ class CreateCarSalesTable extends Migration
             $table->string('name'); // поле для марки и подели авто
             $table->text('description')->nullable(); // поле для описания авто
             $table->double('price')->default(0); // поле для цены авто
-            $table->text('image1')->nullable(); // поле для фото авто
-            $table->text('image2')->nullable();
-            $table->text('image3')->nullable();
-            $table->text('image4')->nullable();
-            $table->text('image5')->nullable();
+            $table->text('image')->nullable(); // поле для фото авто
             $table->timestamps();
         });
     }
