@@ -44,7 +44,7 @@ class BasketController extends Controller
             // фасад Auth с помощью метода check добавляет в поле user_id id методом id фасада Auth
             $order->user_id = Auth::id();
             $order->save();
-            // Сохранение даннх в поле
+            // Сохранение данных в поле
         }
 
         $product = Product::find($productId);

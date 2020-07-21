@@ -44,10 +44,5 @@ class Order extends Model
         }
         return false;
     }
-/*
-    public function user(){
-        // метод который делает связь с классом пользователей
-        return $this->belongsTo(User::class);
-    }
-*/
+
 }
