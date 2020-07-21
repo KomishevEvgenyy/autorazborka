@@ -23,7 +23,6 @@ class Order extends Model
     }
 
     public function calculateFullSum(){
-
         // метод который считает общую суму товара
         $sum = 0;
         foreach($this->products as $product){
@@ -46,7 +45,7 @@ class Order extends Model
     }
 
     public static function getFullSum(){
-        // метод который возвразает общую суму товаров из сессии
+        // метод который возвращает общую суму товаров из сессии
         return session('full_order_sum', 0);
     }
 

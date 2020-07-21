@@ -29,7 +29,7 @@
                     <td>{{ $order->name }}</td>
                     <td>{{ $order->phone }}</td>
                     <td>{{ $order->created_at->format('d-m-Y H:i') }}</td>
-                    <td>{{ $order->getFullPrice() }} грн.</td>
+                    <td>{{ $order->calculateFullSum() }} грн.</td>
                     <td>
                         <div class="btn-group" role="group">
                             @if(Auth::user()->isAdmin())
