@@ -17,13 +17,37 @@ class Order extends Model
         return $this->belongsToMany(Product::class)->withPivot('count')->withTimestamps();
     }
 
-    public function getFullPrice(){
+    public function scopeActive($query) {
+        // метод для фильтрации активных заказов для OrderControoler администратора и пользователя
+        return $query->where('status', 1);
+    }
+
+    public function calculateFullSum(){
+
         // метод который считает общую суму товара
         $sum = 0;
         foreach($this->products as $product){
             $sum += $product->getPriceForCount();
         }
         return $sum;
+    }
+
+    public static function eraseOrderSum(){
+        // метод для чистки поля full_order_sum в сессии помле отправки заказа
+        session()->forget('full_order_sum');
+    }
+
+    public static function changeFullSum($changeSum){
+        // метод который будет изменять суму при добалении нового  товара в корзину
+        $sum = self::getFullSum() + $changeSum;
+        // в переменную $sum присваиваем значение со слодения сумы в методе getFullSum и сумву нвого товара $changeSum
+        session(['full_order_sum' => $sum]);
+        // ложим в поле сессии full_order_sum новое значение от слодения двух значений $sum
+    }
+
+    public static function getFullSum(){
+        // метод который возвразает общую суму товаров из сессии
+        return session('full_order_sum', 0);
     }
 
     public function saveOrder($name, $phone){

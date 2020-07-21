@@ -17,13 +17,10 @@ class BasketIsNotEmpty
     public function handle($request, Closure $next)
     {
         $orderId = session('orderId');
-        if (!is_null($orderId)) {
-            $order = Order::findOrFail($orderId);
-            // findOrFail выдаст ошибку 404 если по id order не будет ничего найдено
-            if ($order->products->count() > 0) {
-                // если колчичество товаров в корзине больше 0 то выполнить условие
-                return $next($request);
-            }
+        if (!is_null($orderId) && Order::getFullSum() > 0) {
+            // Если заказ в сессии больше 0 то выполнить условие
+            return $next($request);
+
         }
         session()->flash('warning', 'Ваша корзина пустая');
         return redirect()->route('index');

@@ -18,7 +18,7 @@
                 @csrf
                 <button type="submit" class="btn btn-lg btn-block btn-outline-primary">В корзину</button>
                 <a class="btn btn-lg btn-block btn-outline-dark"
-                   href="{{ route('product', [$product->category->code, $product->code]) }}">Подробнее</a>
+                   href="{{ route('product', [isset($category) ? $category->code : $product->category->code, $product->code]) }}">Подробнее</a>
             </form>
 
         </div>

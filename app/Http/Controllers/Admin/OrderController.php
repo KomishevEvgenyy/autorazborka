@@ -26,7 +26,8 @@ class OrderController extends Controller
     public function index()
     {
         // метод для вывода всех заказов в шаблон
-        $orders = Order::where('status', 1)->paginate(10);
+        // active обьект для фильрации активных заказов
+        $orders = Order::active()->paginate(10);
 
         return view('auth.orders.index', compact('orders'));
     }

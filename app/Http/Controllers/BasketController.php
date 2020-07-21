@@ -16,9 +16,9 @@ class BasketController extends Controller
 
         if (is_null($orderId)) {
             // Если значение сессии null то нужно создать заказ и положить в сессию
-            $order = Order::create()->id;
+            $order = Order::create();
             // методом create() создаем новое id для таблицы orders и присваиваем это значение переменной $order
-            session(['orderId' => $order]);
+            session(['orderId' => $order->id]);
             //  помещаем заказ в сесию в виде масива
         }else {
             $order = Order::find($orderId);
@@ -49,11 +49,10 @@ class BasketController extends Controller
 
         $product = Product::find($productId);
         // находим товар который был положен в корзину и записываем его в переменную product
+        Order::changeFullSum($product->price);
+        // изменяем суму заказа с помощью метода changeFullSum передав ему суму продукта и сложив два значения
         session()->flash('success', 'Добавлен товар '.$product->name);
         // методом flash через сессиию выводим сообщение о добавлнении товара в корзину в шаблоне main
-
-        // $order->products()->attach($productId);
-        // добавление товара в заказ с мопощью связи где методом attach() передаем id товара
 
         return redirect()->route('basket');
     }
@@ -86,6 +85,9 @@ class BasketController extends Controller
 
         $product = Product::find($productId);
         // находим товар который был положен в корзину и записываем его в переменную product
+        Order::changeFullSum(-$product->price);
+        // изменяем суму заказа с помощью метода changeFullSum передав ему суму продукта и вычитанием отнимаем
+        // от общей суму переданое значение
         session()->flash('error', 'Удален товар '.$product->name);
         // методом flash через сессиию выводим сообщение о удалении товара из корзину в шаблоне main
 
@@ -140,6 +142,8 @@ class BasketController extends Controller
             // через метод get*(
             session()->flash('error','Ошибка');
         }
+        Order::eraseOrderSum();
+        // метод для чистки поля full_order_sum в сессии в которой хранится сума заказа
         return redirect()->route('index');
     }
 }

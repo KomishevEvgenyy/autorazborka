@@ -5,7 +5,7 @@
 @section('content')
     <div class="text-center">
         <h1>Подтвердите заказ</h1>
-        <p>Общая стоимость заказа: <b>{{$order->getFullPrice()}} грн.</b></p>
+        <p>Общая стоимость заказа: <b>{{$order->calculateFullSum()}} грн.</b></p>
         <p class="">Укажите свои имя и номер телефона, чтобы наш менеджер мог с вами связаться:</p>
     </div>
     <div class="container">
@@ -26,21 +26,6 @@
                             </div>
                             <input type="text" name="phone" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                         </div>
-
-                        <!--
-                        <div class="form-group">
-                            <label for="name" class="control-label col-lg-offset-3 col-lg-2">Имя: </label>
-                            <div class="col-lg-4">
-                                <input type="text" name="name" id="name" value="" class="form-control">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="phone" class="control-label col-lg-offset-3 col-lg-2">Номер телефона: </label>
-                            <div class="col-lg-4">
-                                <input type="text" name="phone" id="phone" value="" class="form-control">
-                            </div>
-                        </div>-->
                     </div>
                     <input type="submit" class="btn btn-success ml-3" value="Подтвердите заказ">
                 </div>
