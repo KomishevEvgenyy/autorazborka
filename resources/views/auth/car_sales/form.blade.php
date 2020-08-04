@@ -28,14 +28,15 @@
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="code">Цена:</label>
                     <div class="col-sm-6">
-                        @error('code')
+                        @error('price')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="text" class="form-control" id="code" name="code"
+                        <input type="text" class="form-control" id="price" name="price"
                                value=" {{ old('code', isset($carSale) ? $carSale->price :null) }} ">
                     </div>
                 </div>
                 <br>
+
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="name">Введите марку и модель автомобиля:</label>
                     <div class="col-sm-6">
@@ -47,6 +48,7 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="description">Описание:</label>
                     <div class="col-sm-6">
@@ -59,6 +61,7 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="image">Фото:</label>
                     <div class="col-sm-10">

@@ -41,7 +41,6 @@ class CarSaleController extends Controller
      */
     public function store(CarSaleRequest $request)
     {
-        dd($request);
         // метод для сохранения товара
         $params = $request->all();
         unset($params['image']);
