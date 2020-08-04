@@ -11,44 +11,54 @@
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
         </ol>
 
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <svg class="bd-placeholder-img" xmlns="http://www.w3.org/2000/svg"
-                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                    <rect width="100%" height="100%" fill="#777"></rect>
-                </svg>
-
-                <div class="container">
-                    <div class="carousel-caption text-left">
-                        <img src="{{ URL::asset('/storage/home1-slide1.jpg') }}" width="100%">
-                    </div>
-                </div>
-            </div>
-
             <div class="carousel-item">
-                <svg class="bd-placeholder-img" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"></rect></svg>
+                <img src="{{ URL::asset('/storage/home1-slide1.jpg') }}" width="100%">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                        <h1>Выкуп и продажа б/у автомобилей</h1>
+                        <p>Deawoo ВАЗ ГАЗ ЗАЗ Москвич Таврия</p>
+                        <p>
+                            <a class="btn btn-outline-light" href="tel:+380952256060" role="button">+380952256060</a>
+                            <a class="btn btn-outline-light" href="tel:+380983516928" role="button">+380983516928</a>
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div class="carousel-item active">
+               <img src="{{ URL::asset('/storage/home2-slide1.jpg') }}" width="100%">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Услуги эвакуатора</h1>
+                        <p>Ремонт автомобилей</p>
+                        <p>
+                            <a class="btn btn-outline-light" href="tel:+380952256060" role="button">+380952256060</a>
+                            <a class="btn btn-outline-light" href="tel:+380983516928" role="button">+380983516928</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
+
         <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-
     </div>
 
+    <div class="mt-3">
+        <img src="{{ URL::asset('/storage/whyus-bg1.jpg') }}" width="100%">
+    </div>
+        <div class="mt-3">
+            <h3 class="text-center">Услуги эвакуатора</h3>
+            <img src="{{ URL::asset('/storage/whyus-bg.jpg')}}" width="100%">
+        </div>
 @endsection

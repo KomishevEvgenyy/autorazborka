@@ -36,6 +36,7 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="name">Название:</label>
                     <div class="col-sm-6">
@@ -47,6 +48,7 @@
                     </div>
                 </div>
                 <br>
+
                     <div class="input-group row">
                         <label class="col-sm-2 col-form-label" for="name">Категория:</label>
                         <div class="col-sm-6">
@@ -64,6 +66,7 @@
                         </div>
                     </div>
                     <br>
+
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="description">Описание:</label>
                     <div class="col-sm-6">
@@ -76,6 +79,7 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="input-group row">
                     <label class="col-sm-2 col-form-label" for="image">Фото:</label>
                     <div class="col-sm-10">
@@ -85,6 +89,7 @@
                     </div>
                 </div>
                     <br>
+
                     <div class="input-group row">
                         <label class="col-sm-2 col-form-label" for="price">Цена:</label>
                         <div class="col-sm-6">

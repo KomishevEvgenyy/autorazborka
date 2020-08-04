@@ -10,7 +10,6 @@
             </h1>
             <ul class="list-unstyled mt-3 mb-4">
                 <li>Цена: {{ $product->price }} грн.</li>
-                <li>{{ $product->description }}</li>
             </ul>
 
             <form action="{{ route('basket-add', $product) }}" method="POST">
@@ -20,7 +19,6 @@
                 <a class="btn btn-lg btn-block btn-outline-dark"
                    href="{{ route('product', [isset($category) ? $category->code : $product->category->code, $product->code]) }}">Подробнее</a>
             </form>
-
         </div>
     </div>
 </div>
