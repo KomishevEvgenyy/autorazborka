@@ -5,12 +5,13 @@
 @section('content')
     <div class="pl-4">
         <h2 class="text-justify font-weight-bold">Наши контакты</h2>
-
         <div class="list-group">
             <h5 class="text-justify font-weight-bold">Мобильные телефоны</h5>
             <p><a href="tel:+380952256060" class="list-group-item list-group-item-action">+38(095)225-60-60</a></p>
             <p><a href="tel:+380983516928" class="list-group-item list-group-item-action">+38(098)351-69-28</a></p>
-        </div><br>
+        </div>
+        <br>
+
         <div>
             <div>
                 <h5 class="text-justify font-weight-bold">СТО расположено по адресу: Запорожье, улица Гончарова, 24</h5>

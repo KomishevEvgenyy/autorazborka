@@ -10,11 +10,9 @@
     </div>
         <div class="row ml-5">
             @forelse($categories as $category)
-                <div class="col-2 mr-3">
                 <a href="{{ route('category', $category->code) }}">
                     <img width="180" src="{{ Storage::url( $category->image) }}">
                 </a>
-                </div>
             @empty
                 <h3>Категории отсутствуют</h3>
             @endforelse
