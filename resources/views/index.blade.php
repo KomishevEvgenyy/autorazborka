@@ -1,14 +1,9 @@
 @extends('layouts.main')
 
-@section('head')
-
-@endsection
-
 @section('title-block', 'Главная')
 
-
-@section('content')
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+@section('index')
+    <div id="myCarousel" class="carousel slide mt-1" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>

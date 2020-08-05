@@ -16,15 +16,14 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    @yield('head')
     <title> Авторазборка Запорожье - @yield('title-block')</title>
 </head>
 <body class="bg-white">
     <div>
         @include('include/header')
         @include('include/navbar')
+        @yield('index')
     </div>
-    @include('include/toolbar')
     <div class="container mt-5">
         <div class="starter-template">
             @if(session()->has('success'))
