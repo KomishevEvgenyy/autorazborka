@@ -49,10 +49,10 @@
         </a>
     </div>
 
-    <div class="mt-3">
+    <div class="mb-0 mt-0">
         <img src="{{ URL::asset('/storage/whyus-bg1.jpg') }}" width="100%">
     </div>
-        <div class="mt-3">
+        <div class="mt-0 mb-0">
             <h3 class="text-center">Услуги эвакуатора</h3>
             <img src="{{ URL::asset('/storage/whyus-bg.jpg')}}" width="100%">
         </div>

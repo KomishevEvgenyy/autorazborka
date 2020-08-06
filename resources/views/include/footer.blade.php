@@ -1,4 +1,4 @@
-<div class="">
+<div class="footer">
     <hr class="featurette-divider">
     <footer class="container py-5">
         <div class="row">

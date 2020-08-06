@@ -15,26 +15,43 @@
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        .card-div-position-relative {
+            position: relative;
+            width: 100%;
+            height: 500px;
+        }
 
+        .card-div-position-absolute {
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            padding: 0 5px 0 5px;
+        }
+    </style>
     <title> Авторазборка Запорожье - @yield('title-block')</title>
 </head>
 <body class="bg-white">
-    <div>
-        @include('include/header')
-        @include('include/navbar')
-    </div>
-    <div class="container mt-5">
-        <div class="starter-template">
-            @if(session()->has('success'))
-                <p class="alert alert-success">{{ session()->get('success') }}</p>
-            @endif
-            @if(session()->has('error'))
-                <p class="alert alert-danger">{{ session()->get('error')}}</p>
-                @endif
-            @yield('content')
+    <div class="page">
+        <div>
+            @include('include/header')
+            @include('include/navbar')
         </div>
+        <div class="container mt-5">
+            <div class="starter-template">
+                @if(session()->has('success'))
+                    <p class="alert alert-success">{{ session()->get('success') }}</p>
+                @endif
+                @if(session()->has('error'))
+                    <p class="alert alert-danger">{{ session()->get('error')}}</p>
+                    @endif
+                @yield('content')
+            </div>
+        </div>
+        @yield('index')
     </div>
-    @yield('index')
     @include('include/footer')
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
