@@ -14,7 +14,7 @@
                     <img width="180" src="{{ Storage::url( $category->image) }}">
                 </a>
             @empty
-                <h3>Категории отсутствуют</h3>
+                <h3 class="text-center">Категории отсутствуют</h3>
             @endforelse
         </div>
 @endsection

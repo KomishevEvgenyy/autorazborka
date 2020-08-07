@@ -30,11 +30,11 @@ class ProductRequest extends FormRequest
             'price' => 'required|numeric|min:1',
         ];
 
-        if($this->route()->named('products.update ')){
+        /*if($this->route()->named('products.update ')){
             // проверка на уникальность кода. Если код был уже использован то выдаст ошибку при создании продукта,
             // а не при её редактировании
             $rules['code'] .= ','. $this->route()->parameter('product')->id;
-        }
+        }*/
         return $rules;
     }
 
