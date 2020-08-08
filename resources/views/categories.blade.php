@@ -10,7 +10,7 @@
     </div>
         <div class="row ml-5">
             @forelse($categories as $category)
-                <a href="{{ route('category', $category->code) }}">
+                <a href="{{ route('category', $category->code) }}" class="mx-2 my-1">
                     <img width="180" src="{{ Storage::url( $category->image) }}">
                 </a>
             @empty
