@@ -11,12 +11,14 @@
    разборка Daewoo, разборка ДЕО, разборка ГАЗ, разборка ВАЗ, разборка ЗАЗ, разборка Таврия, разборка Москвич,
    детали Daewoo, детали ДЕО, детали ГАЗ, детали ВАЗ, детали ЗАЗ, детали Таврия, детали Москвич,
    б/у запчасти Daewoo, б/у запчасти ДЕО, б/у запчасти ГАЗ, б/у запчасти ВАЗ, б/у запчасти ЗАЗ, б/у запчасти Таврия, б/у запчасти Москвич,
-   б/у резина" />
+   б/у резина, Запорожье, Украина"/>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <style>
         * {
+            font-family: "Montserrat";
             margin: 0;
             padding: 0;
         }
@@ -53,11 +55,19 @@
             width: 100%;
             padding: 0 5px 0 5px;
         }
+
+        .bg-color-btn-header-black {
+            background-color: #000000;
+        }
+
+        .bg-color-btn-header-red {
+            background-color: #e83223;
+        }
     </style>
     <title> Авторазборка Запорожье - @yield('title-block')</title>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper bg-white">
         <div class="index-content">
             @include('include.header')
             @include('include.navbar')
