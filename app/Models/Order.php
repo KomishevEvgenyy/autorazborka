@@ -18,7 +18,7 @@ class Order extends Model
     }
 
     public function scopeActive($query) {
-        // метод для фильтрации активных заказов для OrderControoler администратора и пользователя
+        // метод для фильтрации активных заказов для OrderController администратора и пользователя
         return $query->where('status', 1);
     }
 
@@ -32,7 +32,7 @@ class Order extends Model
     }
 
     public static function eraseOrderSum(){
-        // метод для чистки поля full_order_sum в сессии помле отправки заказа
+        // метод для чистки поля full_order_sum в сессии поcле отправки заказа
         session()->forget('full_order_sum');
     }
 

@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-6 col-md">
-            <h5>Навигация</h5>
+            <h5 class="font-weight-bold">Навигация</h5>
             <ul class="list-unstyled text-small">
                 <li><a class="text-muted" href="{{ route('index') }}">Главная</a></li>
                 <li><a class="text-muted" href="{{ route('contacts') }}">Контакты</a></li>
@@ -18,7 +18,7 @@
         </div>
 
         <div class="col-6 col-md">
-            <h5>Контакты</h5>
+            <h5 class="font-weight-bold">Контакты</h5>
             <ul class="list-unstyled text-small">
                 <li><a class="text-muted" href="tel:+380952256060">+380952256060</a></li>
                 <li><a class="text-muted" href="tel:+380983516928">+380983516928</a></li>

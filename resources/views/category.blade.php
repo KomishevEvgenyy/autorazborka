@@ -13,7 +13,7 @@
             @include('layouts.card', compact('product'))
         @empty
             <div class="text-center">
-                <h5>На данный момент детали для автомобиля {{ $category->name }} отсутствуют.
+                <h5>На данный момент детали для автомобиля <span class="font-weight-bold"> {{ $category->name }} </span> отсутствуют.
                     Ожидайте обновление ассортимента товаров.</h5>
             </div>
         @endforelse

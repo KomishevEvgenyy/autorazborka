@@ -13,4 +13,5 @@ class Category extends Model
         // возвращает все товары определенной категории
         return $this->hasMany(Product::class);
     }
+
 }

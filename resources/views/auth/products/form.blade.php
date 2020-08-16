@@ -92,12 +92,23 @@
 
                     <div class="input-group row">
                         <label class="col-sm-2 col-form-label" for="price">Цена:</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-2">
                             @error('price')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <input type="text" class="form-control" id="price" name="price"
                                    value=" {{ old('price', isset($product) ? $product->price:null) }} ">
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="input-group row">
+                        <label class="col-sm-2 col-form-label" for="price">Кол-во:</label>
+                        <div class="col-sm-2">
+                            @error('count')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <input type="text" class="form-control" id="count" name="count"
+                                   value=" {{ old('count', isset($product) ? $product->count:null) }} ">
                         </div>
                     </div>
                 <button class="btn btn-success mt-4">Сохранить</button>

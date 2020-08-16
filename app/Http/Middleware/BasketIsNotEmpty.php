@@ -16,6 +16,8 @@ class BasketIsNotEmpty
      */
     public function handle($request, Closure $next)
     {
+        // метод который проверяет не пустая ли корзина у пользователя.
+        // Если корзина пустая выполняет redirect на главную страницу с ошибкой в session
         $orderId = session('orderId');
         if (!is_null($orderId) && Order::getFullSum() > 0) {
             // Если заказ в сессии больше 0 то выполнить условие

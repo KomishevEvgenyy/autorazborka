@@ -39,13 +39,12 @@ class MainController extends Controller
         // а вторым параметром указываем что ищем. Далее методом first забираем с масива нужный нам бренд
         return view('category', compact('category'));
         //  Методом compact передаем имя бренда с поля code
-
     }
 
-    public function product($category_code, $product_code = null){
+    public function product($categoryCode, $productCode = null){
         // метод который будет динамически формировать страницы с товарами. Метод принимает первым параметром поле code
         // категории, а вторым параметром принимает поле code товара
-        $product = Product::where('code', $product_code)->first();
+        $product = Product::byCodeProduct($productCode)->first();
         return view('product', compact('product'));
         // возвращает шаблон product.blade.php, а так же передает массив товаров с БД
     }

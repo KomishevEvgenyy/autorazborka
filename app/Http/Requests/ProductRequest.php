@@ -28,13 +28,14 @@ class ProductRequest extends FormRequest
             'name' => 'required|min:3|max:25',
             'description' => 'required|min:15',
             'price' => 'required|numeric|min:1',
+            'count' => 'required|numeric|min:0',
         ];
 
-        /*if($this->route()->named('products.update ')){
+        if($this->route()->named('products.update ')){
             // проверка на уникальность кода. Если код был уже использован то выдаст ошибку при создании продукта,
             // а не при её редактировании
             $rules['code'] .= ','. $this->route()->parameter('product')->id;
-        }*/
+        }
         return $rules;
     }
 
@@ -54,7 +55,11 @@ class ProductRequest extends FormRequest
 
             'price.required' => 'Поле "Цена" обязательное для заполнения',
             'price.numeric' => 'Введите число',
-            'price.min' => 'Поле "Цена" должно иметь минимум :min символ'
+            'price.min' => 'Поле "Цена" должно иметь минимум :min символов',
+
+            'count.required' => 'Поле "Кол-во" обязательное для заполнения',
+            'count.numeric' => 'Введите число',
+            'count.min' => 'Поле "Кол-во" должно иметь минимум :min символов',
         ];
     }
 }

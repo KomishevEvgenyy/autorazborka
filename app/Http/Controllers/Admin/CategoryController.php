@@ -40,13 +40,12 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        // метод для сохранения категории
+        // метод для создания категории
 
         $params = $request->all();
         unset($params['image']);
         if($request->has('image')){
-            $path = $request->file('image')->store('categories');
-            $params['image'] = $path;
+            $params['image'] = $request->file('image')->store('categories');
         }
 
         Category::create($params);
@@ -91,8 +90,7 @@ class CategoryController extends Controller
         unset($params['image']);
         if($request->has('image')){
             Storage::delete($category->image);
-            $path = $request->file('image')->store('categories');
-            $params['image'] = $path;
+            $params['image'] = $request->file('image')->store('categories');
         }
 
         $category->update($params);

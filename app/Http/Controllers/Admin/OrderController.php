@@ -25,15 +25,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // метод для вывода всех заказов в шаблон
-        // active обьект для фильрации активных заказов
+       /* метод для вывода всех заказов в шаблон для admin
+        active обьект для фильрации активных заказов, paginate выводит указаное количество заказов на странице,
+        где в шаблоне index методом links бедут выводится количество страниц*/
         $orders = Order::active()->paginate(10);
-
         return view('auth.orders.index', compact('orders'));
     }
 
     public function show(Order $order){
-        // метод для вывода заказа клиента в шаблон
+        // метод для вывода заказа клиенту в шаблон show
         return view('auth.orders.show', compact('order'));
     }
 }

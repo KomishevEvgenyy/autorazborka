@@ -17,7 +17,7 @@ class CarSaleController extends Controller
      */
     public function index()
     {
-        // метод который выводит все автомобили
+        // метод который передает в шаблон index все автомобили из БД
         $carSale = CarSale::paginate(10);
         return view('auth.car_sales.index', compact('carSale'));
     }
@@ -29,7 +29,7 @@ class CarSaleController extends Controller
      */
     public function create()
     {
-        // метод для создания товара (автомобиль)
+        // метод возвразает шаблон формы для создания товара (автомобиля)
         return view('auth.car_sales.form');
     }
 
@@ -41,13 +41,12 @@ class CarSaleController extends Controller
      */
     public function store(CarSaleRequest $request)
     {
-        // метод для сохранения товара
+        // метод для сохранения формы товара
         $params = $request->all();
-        unset($params['image']);
 
+        unset($params['image']);
         if($request->has('image')) {
-            $path = $request->file('image')->store('car_sales');
-            $params['image'] = $path;
+            $params['image'] = $request->file('image')->store('car_sales');
         }
         CarSale::create($params);
 
@@ -87,13 +86,12 @@ class CarSaleController extends Controller
      */
     public function update(CarSaleRequest $request, CarSale $carSale)
     {
-        // метод для редактирования товара
+        // метод для редактирования формы автомобиля
         $params = $request->all();
         unset($params['image']);
         if($request->has('image')) {
             Storage::delete($carSale->image);
-            $path = $request->file('image')->store('car_sales');
-            $params['image'] = $path;
+            $params['image'] = $request->file('image')->store('car_sales');
         }
 
         $carSale->update($params);

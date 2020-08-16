@@ -15,7 +15,6 @@ class OrderController extends Controller
         // active обьект для фильрации активных заказов
         $orders = Auth::user()->orders()->active()->get();
 
-
         return view('auth.orders.index', compact('orders'));
     }
 

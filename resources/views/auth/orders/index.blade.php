@@ -23,7 +23,7 @@
                     Действия
                 </th>
             </tr>
-            @foreach($orders as $order)
+            @foreach($orders->sortByDesc('created_at') as $order)
                 <tr>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->name }}</td>

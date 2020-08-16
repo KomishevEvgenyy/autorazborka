@@ -3,43 +3,39 @@
 @section('title-block', 'Управление категориями')
 
 @section('content')
-    <div class="col-md-12">
+    <div class="col-sm-12">
         @isset($products)
         <h1>Заказы</h1>
         <table class="table text-center">
-            <tbody>
-                <tr>
-                    <th>
-                        #
-                    </th> <th>
-                        Код
-                    </th> <th>
-                        Имя категории
-                    </th> <th>
-                        Описание
-                    </th> <th>
-                        Действие
-                    </th>
+            <thead>
+                <tr class="row">
+                    <th class="col-1">#</th>
+                    <th class="col-2">Код</th>
+                    <th class="col">Имя категории</th>
+                    <th class="col-3">Описание</th>
+                    <th class="col-1">Кол-во</th>
+                    <th class="col-4">Действие</th>
                 </tr>
+            </thead>
+            <tbody>
                 @foreach($products as $product)
-                <tr>
-                    <td>{{ $product->id }}</td>
-                    <td>{{ $product->code }}</td>
-
+                <tr class="row">
+                    <td class="col-1">{{ $product->id }}</td>
+                    <td class="col-2">{{ $product->code }}</td>
                     @foreach($categories as $category)
                             @isset($product)
                                 @if($product->category_id == $category->id)
-                                <td>{{ $category->name }}</td>
+                                <td class="col" >{{ $category->name }}</td>
                                 @endif
                             @endisset
                     @endforeach
-                    <td>{{ $product->description }}</td>
-
-                    <td>
+                    <td class="col-3">{{ $product->description }}</td>
+                    <td class="col-1">{{ $product->count }}</td>
+                    <td class="col-4">
                         <div class="btn-group" role="group">
                             <form method="POST" action="{{ route('products.destroy', $product) }}">
-                                <a class="btn btn-success mr-3" href="{{ route('products.show', $product) }}">Открыть</a>
-                                <a class="btn btn-warning mr-3" href="{{ route('products.edit', $product) }}">Редактировать</a>
+                                <a class="btn btn-success" href="{{ route('products.show', $product) }}">Открыть</a>
+                                <a class="btn btn-warning" href="{{ route('products.edit', $product) }}">Редактировать</a>
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-danger" value="Удалить" type="submit">

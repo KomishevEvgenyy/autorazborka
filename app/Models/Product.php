@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['code', 'name', 'description', 'price', 'image', 'category_id'];
+    protected $fillable = ['code', 'name', 'description', 'price', 'image', 'category_id', 'count'];
     // перечисляем поля которые можно будет заполнять при создании товаров через админ панель
     public function category(){
         //  метод который устанавливает связи с молделью Category со связью один к одному так как у товара одна категория
@@ -23,5 +23,15 @@ class Product extends Model
         }
         return $this->price;
         // если де значение null то выводим его цену за единицу товара
+    }
+
+    public function scopeByCodeProduct($query, $code){
+        // scope для метода product MainController
+        return $query->where('code', $code);
+    }
+
+    public function isAvailable(){
+        // метод который проверяет наличие товара
+        return $this->count > 0;
     }
 }

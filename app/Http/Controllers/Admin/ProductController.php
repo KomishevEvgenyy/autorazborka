@@ -47,10 +47,10 @@ class ProductController extends Controller
     {
         // метод для сохранения товара
         $params = $request->all();
+
         unset($params['image']);
         if($request->has('image')){
-            $path = $request->file('image')->store('products');
-            $params['image'] = $path;
+            $params['image'] = $request->file('image')->store('products');
         }
         Product::create($params);
 
@@ -78,7 +78,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        // метод для внесения изменений в товар
+        // метод передает данные товара в форму для её редактирования
         $categories = Category::get();
         return view('auth.products.form', compact('product', 'categories'));
     }
@@ -92,13 +92,12 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        // метод для редактирования товара
+        // метод сохраняет форму после её редактирования
         $params = $request->all();
         unset($params['image']);
         if($request->has('image')){
             Storage::delete($product->image);
-            $path = $request->file('image')->store('products');
-            $params['image'] = $path;
+            $params['image'] = $request->file('image')->store('products');
         }
 
         $product->update($params);
