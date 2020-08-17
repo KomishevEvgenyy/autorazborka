@@ -42,9 +42,12 @@ class MainController extends Controller
     }
 
     public function product($categoryCode, $productCode = null){
-        // метод который будет динамически формировать страницы с товарами. Метод принимает первым параметром поле code
-        // категории, а вторым параметром принимает поле code товара
-        $product = Product::byCodeProduct($productCode)->first();
+        /*
+        метод который будет динамически формировать страницы с товарами. Метод принимает первым параметром поле code
+        категории, а вторым параметром принимает поле code товара
+       */
+        $product = Product::withTrashed()->byCodeProduct($productCode)->first();
+        // метод withTrashed() позволяет получать удаленные товары с БД
         return view('product', compact('product'));
         // возвращает шаблон product.blade.php, а так же передает массив товаров с БД
     }

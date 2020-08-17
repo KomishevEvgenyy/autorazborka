@@ -4,9 +4,12 @@ namespace App\Models;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
+    use SoftDeletes;
+    // разширение класса Product уже реализованым ранее классом
+
     protected $fillable = ['code', 'name', 'description', 'price', 'image', 'category_id', 'count'];
     // перечисляем поля которые можно будет заполнять при создании товаров через админ панель
     public function category(){
@@ -32,6 +35,7 @@ class Product extends Model
 
     public function isAvailable(){
         // метод который проверяет наличие товара
-        return $this->count > 0;
+        return !$this->trashed() && $this->count > 0;
+        // товар должен быть не удалён и не меньше нуля.
     }
 }

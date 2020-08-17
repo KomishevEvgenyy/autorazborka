@@ -34,6 +34,9 @@ class OrderController extends Controller
 
     public function show(Order $order){
         // метод для вывода заказа клиенту в шаблон show
-        return view('auth.orders.show', compact('order'));
+        // метод withTrashed() позволяет получать удаленные товары с БД
+        $products = $order->products()->withTrashed()->get();
+
+        return view('auth.orders.show', compact('order', 'products'));
     }
 }
