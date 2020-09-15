@@ -24,18 +24,18 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'code' => 'required|min:3|max:25|unique:products,code',
+            'code' => 'required|min:3|max:25', // |unique:products,code
             'name' => 'required|min:3|max:25',
             'description' => 'required|min:15',
             'price' => 'required|numeric|min:1',
             'count' => 'required|numeric|min:0',
         ];
 
-        if($this->route()->named('products.update ')){
-            // проверка на уникальность кода. Если код был уже использован то выдаст ошибку при создании продукта,
-            // а не при её редактировании
-            $rules['code'] .= ','. $this->route()->parameter('product')->id;
-        }
+//        if($this->route()->named('products.update ')){
+//            // проверка на уникальность кода. Если код был уже использован то выдаст ошибку при создании продукта,
+//            // а не при её редактировании
+//            $rules['code'] .= ','. $this->route()->parameter('product')->id;
+//        }
         return $rules;
     }
 

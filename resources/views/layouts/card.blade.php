@@ -5,7 +5,7 @@
         </div>
         <div class="caption mt-1">
             <h1 class="card-title pricing-card-title">
-                <img width="100%" src="{{ Storage::url( $product->image) }}" alt="Фото товара">
+                <img width="100%" src="{{ URL::asset('/storage/'.$product->image) }}" alt="{{ $product->name }}">
             </h1>
         </div>
         <div class="card-div-position-absolute">

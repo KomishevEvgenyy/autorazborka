@@ -10,8 +10,8 @@ class BasketIsNotEmpty
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -20,7 +20,7 @@ class BasketIsNotEmpty
         // Если корзина пустая выполняет redirect на главную страницу с ошибкой в session
         $orderId = session('orderId');
         if (!is_null($orderId) && Order::getFullSum() > 0) {
-            // Если заказ в сессии больше 0 то выполнить условие
+            // Если заказ есть и в сессии сумма заказа больше 0 то выполнить условие
             return $next($request);
 
         }
