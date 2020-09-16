@@ -56,14 +56,24 @@ class Basket
     // метод для проверки количеста товара добавленого в корзину. Если количество товара добавленого в корзину привышает
     // количество товара в наличии, возвращает false
     /**
+     * @param bool $updateCount
      * @return bool
      */
-    public function countAvailable()
+    public function countAvailable($updateCount = false)
     {
         foreach ($this->order->products as $orderProduct) {
+            // если количество товара добавленое в корзину больше чем количество товара в наличии возвращаем false
             if ($orderProduct->count < $this->getPivotRow($orderProduct)->count) {
                 return false;
             }
+            if ($updateCount){
+                // отнимаем количество товара
+                $orderProduct->count -= $this->getPivotRow($orderProduct)->count;
+            }
+        }
+        if ($updateCount){
+            // обновления количества товара в БД
+            $this->order->products->map->save();
         }
         return true;
     }
@@ -75,7 +85,7 @@ class Basket
      */
     public function saveOrder($name, $order)
     {
-        if (!$this->countAvailable()) {
+        if (!$this->countAvailable(true)) {
             return false;
         }
         return $this->order->saveOrder($name, $order);
