@@ -9,7 +9,7 @@
                 <h1>{{ $product->name }}</h1>
                 <h2>{{ $product->category->name }}</h2>
                 <p>Цена: <b>{{ $product->price }} грн.</b></p>
-                <p><img width="500px" src="{{ Storage::url( $product->image) }}"></p>
+                <p><img width="500px" src="{{ URL::asset('/storage/'.$product->image) }}"></p>
                 <p class="py-4">{{ $product->description }}</p>
                 <p> Кол-во: {{ $product->count }}</p>
 

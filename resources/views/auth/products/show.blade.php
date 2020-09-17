@@ -36,7 +36,7 @@
             <tr>
                 <td>Картинка</td>
                 <td>
-                    <img width="150" src="{{ Storage::url( $product->image) }}">
+                    <img width="150" src="{{ URL::asset('/storage/'.$product->image) }}">
                 </td>
             </tr>
             <tr>

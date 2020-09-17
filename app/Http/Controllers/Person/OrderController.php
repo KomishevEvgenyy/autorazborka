@@ -7,13 +7,16 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/*
+ * Класс для вывода в представление заказов пользователя
+ * */
 class OrderController extends Controller
 {
     public function index()
     {
         // метод для вывода всех заказов в шаблон
         // active обьект для фильрации активных заказов
-        $orders = Auth::user()->orders()->active()->get();
+        $orders = Auth::user()->orders()->active()->paginate(10);
 
         return view('auth.orders.index', compact('orders'));
     }
