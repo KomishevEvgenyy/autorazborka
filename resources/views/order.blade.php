@@ -18,13 +18,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Имя:</span>
                             </div>
-                            <input type="text" name="name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            <input type="text" name="name" id="name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Номер телефона:</span>
                             </div>
-                            <input type="text" name="phone" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            <input type="text" name="phone" id="phone" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                         </div>
                     </div>
                     <input type="submit" class="btn btn-success ml-3" value="Подтвердите заказ">

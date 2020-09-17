@@ -3,9 +3,11 @@
 
 namespace App\Helpers;
 
+use App\Mail\OrderCreated;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 /*
  * Класс Basket который возвращает обработаный заказ в BasketController
@@ -78,17 +80,23 @@ class Basket
         return true;
     }
 
+    /*
+     * Метод который сохраняет заказ и отправляет на указаную почту
+     * создает екземпляр класса OrderCreated в конструктор которого передает имя телефон заказчика указаных в форме
+     * при заказе, а так же сам заказ.
+     * */
     /**
      * @param $name
-     * @param $order
+     * @param $phone
      * @return bool
      */
-    public function saveOrder($name, $order)
+    public function saveOrder($name, $phone)
     {
         if (!$this->countAvailable(true)) {
             return false;
         }
-        return $this->order->saveOrder($name, $order);
+        Mail::to('nick.deniel.em@gmail.com')->send(new OrderCreated($name, $phone, $this->getOrder()));
+        return $this->order->saveOrder($name, $phone);
     }
 
     /**

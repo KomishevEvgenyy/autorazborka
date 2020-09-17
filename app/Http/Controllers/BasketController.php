@@ -75,6 +75,7 @@ class BasketController extends Controller
     public function basketConfirm(Request $request)
     {
         // метод который подтверждает заказ
+        //$email = Auth::check() ? Auth::user()->email : $request->email;
         if ((new Basket())->saveOrder($request->name, $request->phone)) {
             // в метод saveOrder, модели Basket передаем первым параметром поле имя, а вторым параметром поле телефон
             // если поля заполненны то в основном шаблоне выводим сообщение с помощью флеш сессии
