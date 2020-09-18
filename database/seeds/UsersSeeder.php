@@ -16,8 +16,8 @@ class UsersSeeder extends Seeder
         // php artisan migrate:fresh --seed которая перезапустит миграции и обновит базу данных
         DB::table('users')->insert([
             'name' => 'Администратор',
-            'email' => 'sashkaboss@gmail.com',
-            'password' => bcrypt('sashkaboss2020'),
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
             'is_admin' => 1,
         ]);
     }
